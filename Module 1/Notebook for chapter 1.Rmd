@@ -14,7 +14,7 @@ Basic commands on R
 Assigning variable 
 ```{r}
 x<- 2*8
-x
+x #This is a comment
 ```
 Numeric Vector and operation on it
 ```{r}
