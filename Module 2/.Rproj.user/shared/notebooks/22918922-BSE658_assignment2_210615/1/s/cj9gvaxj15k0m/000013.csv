@@ -1,0 +1,2 @@
+"0","#selecting columns "
+"0","select(abc, c(name,brainwt,bodywt))"

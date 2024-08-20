@@ -1,0 +1,19 @@
+"0","ggplot(data=omitted, mapping = aes(x=brainwt)) +geom_histogram(bins=10,color=""white"",fill="""")"
+"1","[1m[33mError[39m in `geom_histogram()`:[22m
+[38;5;255m[33m![38;5;255m Problem while converting geom to grob.
+[36mℹ[38;5;255m Error occurred in the 1st layer.[39m
+[1mCaused by error:[22m
+[33m![39m Unknown colour name: 
+Backtrace:
+[90m  1. [39m[1mbase[22m (local) `<fn>`(x)
+[90m  2. [39mggplot2:::print.ggplot(x)
+[90m  4. [39mggplot2:::ggplot_gtable.ggplot_built(data)
+[90m  5. [39mggplot2:::by_layer(...)
+[90m 12. [39mggplot2 (local) f(l = layers[[i]], d = data[[i]])
+     ...
+[90m 23. [39mggplot2 (local) draw_panel(..., self = self)
+[90m 31. [39mggplot2::fill_alpha(coords$fill, coords$alpha)
+[90m 32. [39m[1mscales[22m::alpha(fill, alpha)
+[90m 33. [39m[1mfarver[22m::decode_colour(colour, alpha = TRUE)
+[90m 34. [39mfarver:::decode_c(...)
+"

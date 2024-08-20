@@ -1,0 +1,131 @@
+---
+title: "assignment 2"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-08-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+library(tidyverse)
+library(dplyr)
+library(tibble)
+library(ggplot2)
+```
+
+```{r}
+data("sleep")
+```
+
+
+```{r}
+abc <- msleep
+```
+
+
+```{r}
+abc
+```
+```{r}
+filter(abc,bodywt>100)
+```
+#filtering out single row
+```{r}
+filter(abc, name=="Human")
+```
+```{r}
+#selecting columns 
+select(abc, c(name,brainwt,bodywt))
+```
+
+```{r}
+#selection in sequence of columns
+select(abc, name:sleep_total)
+```
+```{r}
+#adding new col
+new_data1 <- mutate(abc,brain_body_ratio=brainwt/bodywt)
+new_data1
+```
+```{r}
+arrange(new_data1,desc(brain_body_ratio))
+```
+```{r}
+#saved and loaded new data
+write.csv(new_data1,file = "Changedsleep_data.csv")
+check <- read.csv("Changedsleep_data.csv")
+check
+```
+
+```{r}
+getwd()
+```
+```{r}
+#tried to use multiple fucntions at a single time
+ check %>% select(c(name,genus,brain_body_ratio)) %>%arrange(desc(brain_body_ratio))%>%filter(genus=="Homo")
+```
+
+```{r}
+#ommiting the na values
+omitted <- select(check, c(name,brainwt,sleep_total,bodywt,genus,order,vore))
+omitted <- na.omit(omitted) %>% arrange(brainwt)
+omitted 
+```
+
+```{r}
+ggplot(data=omitted, mapping = aes(x=brainwt, y=sleep_total)) +geom_point()
+```
+
+
+```{r}
+#tried correlating brainwrt and total sleep time
+ggplot(data=omitted, mapping = aes(x=brainwt,y=sleep_total)) +geom_line()
+```
+```{r}
+ggplot(data=omitted, mapping = aes(x=brainwt,y=sleep_total)) +geom_jitter(width = 20,height = 20)
+```
+
+```{r}
+ggsave('SleepData.png', height = 10, width = 15)
+ggplot(data=omitted, mapping = aes(x=brainwt)) + geom_boxplot()
+```
+
+```{r}
+plt1 <- ggplot(omitted)+ geom_line(mapping = aes(x=brainwt, y=sleep_total))
+plt2 <- ggplot(omitted)+ geom_line(mapping = aes(x=brainwt, y=bodywt))
+library(gridExtra)
+grid.arrange(plt1, plt2, ncol = 2)
+```
+```{r}
+ggsave('BrainWtvsSleep_and_Brainwtvsbodywt.png', height=10,width = 13)
+```
+
+
+```{r}
+ggplot(omitted, aes(x=brainwt,y=sleep_total,colour =vore )) +geom_point()+labs(title = "Correlation between brain weigth and sleep time",
+  x= "Weight (In Kgs)", y="Sleep Time(in hours)", colour ="Types of Vore" )                                                                           +theme_get()
+```
+

@@ -1,0 +1,2 @@
+"0","ggplot(omitted, aes(x=brainwt,y=sleep_total,colour =vore )) +geom_point()+labs(title = ""Correlation between brain weigth and sleep time"","
+"0","  x= ""Weight (In Kgs)"", y=""Sleep Time(in hours)"", colour =""Types of Vore"" )                                                                           +theme_get()"

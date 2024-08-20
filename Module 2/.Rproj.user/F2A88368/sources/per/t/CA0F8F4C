@@ -3,7 +3,7 @@
     "path": "~/GitHub/BSE658/Module 2/Tidyverse.Rmd",
     "project_path": "Tidyverse.Rmd",
     "type": "r_markdown",
-    "hash": "79274106",
+    "hash": "375688468",
     "contents": "",
     "dirty": false,
     "created": 1723629457323.0,
@@ -13,15 +13,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "193,14",
-        "scrollLine": "189"
+        "cursorPosition": "165,0",
+        "scrollLine": "159"
     },
     "folds": "",
-    "lastKnownWriteTime": 1723631424,
+    "lastKnownWriteTime": 1723897853,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1723631424953,
+    "last_content_update": 1723897853567,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,0 +1,4 @@
+"0","#saved and loaded new data"
+"0","write.csv(new_data1,file = ""Changedsleep_data.csv"")"
+"0","check <- read.csv(""Changedsleep_data.csv"")"
+"0","check"

@@ -1,0 +1,4 @@
+"0","#ommiting the na values"
+"0","omitted <- select(check, c(name,brainwt,sleep_total,bodywt,genus,order,vore))"
+"0","omitted <- na.omit(omitted) %>% arrange(brainwt)"
+"0","omitted "

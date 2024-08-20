@@ -1,0 +1,2 @@
+"0","#tried to use multiple fucntions at a single time"
+"0"," check %>% select(c(name,genus,brain_body_ratio)) %>%arrange(desc(brain_body_ratio))%>%filter(genus==""Homo"")"

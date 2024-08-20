@@ -195,6 +195,7 @@ covid_data %>%
   filter(State == "Mizoram") %>%
   select(Date, Positive) ->
   new_df
+new_df
 ```
 
 *Q6. Sometimes, it's better to use the variable name of the product in the first line of code chunk in which `%>%` is used multiple times. How would you do that?*
