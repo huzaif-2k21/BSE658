@@ -1,0 +1,2 @@
+"0","load(""clinicaltrial.Rdata"")"
+"0","#Check the name of the variable in the environment which contains the dataframe and try summarizing it"
