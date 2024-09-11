@@ -1,0 +1,6 @@
+"0","abc <- filter(df, age==16) %>% filter(sex==""Female"") %>% select(wages)"
+"0","mean(abc$wages)"
+"1","[1]"
+"1"," 6.331111"
+"1","
+"

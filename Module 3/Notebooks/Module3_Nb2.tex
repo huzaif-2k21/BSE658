@@ -1,0 +1,1048 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Descriptive Statistics: Scaling and Correlations},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Descriptive Statistics: Scaling and Correlations}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+After taking a first look at our data in the last notebook, now we want
+to start looking at it more closely as per our needs and requirements.
+
+\paragraph{Scaling}\label{scaling}
+
+In simple terms, scaling refers to changing size of an object without
+affecting its shape.
+
+\subparagraph{Linear Transformation:}\label{linear-transformation}
+
+A linear transformation involves addition, subtraction, multiplication,
+or division with a constant value. For example, if you add 1 to the
+numbers 2, 4, and 6, the resulting numbers (3, 5, and 7) are a linear
+transformation of the original numbers. Linear transformations are
+useful, because they allow you to represent your data in a metric that
+is suitable to you and your audience.
+
+\textbf{Centering:}
+
+`Centering' is a particularly common linear transformation. This linear
+transfor- mation is frequently applied to continuous predictor
+variables. To center a predictor variable, subtract the mean of that
+predictor variable from each data point. As a result, each data point is
+expressed in terms of how much it is above the mean (positive score) or
+below the mean (negative score). Thus, subtracting the mean out of the
+variable expresses each data point as a mean-deviation score. The value
+zero now has a new meaning for this variable: it is at the `center' of
+the variable's distribution, namely, the mean.
+
+\textbf{Standardizing:}
+
+A second common linear transformation is `standardizing' or
+`z--scoring'. For standardizing, the centered variable is divided by the
+standard deviation of the sample.
+
+Let's look at an example:
+
+The following are response durations from a psycholinguistic experiment:
+
+\texttt{460ms\ 480ms\ 500ms\ 520ms\ 540ms}
+
+The mean of these five numbers is \texttt{500ms}.
+
+Centering these numbers results in the following:
+
+\texttt{−\ 40ms\ −\ 20ms\ 0ms\ +20ms\ +\ 40ms}
+
+The standard deviation (learnt in last notebook) for these numbers is
+\texttt{\textasciitilde{}32ms}.
+
+To `standardize', we have to divide the centered data by the standard
+deviation. For example, the first point, \texttt{–40ms}, divided by
+\texttt{32ms}, yields \texttt{–1.3}. Since each data point is divided by
+the same number, this change qualifies as a linear transformation.
+
+As a result of standardization, you get the following numbers (rounded
+to one digit):
+
+\texttt{−1.3z\ −\ 0.6z\ 0z\ +\ 0.6z\ +1.3z}
+
+The raw response duration \texttt{460ms} is \texttt{–40ms} (after
+centering), which corresponds to being \texttt{1.3} standard deviations
+below the mean. Thus, standardization involves re-expressing the data in
+terms of \textbf{how many standard deviations they are away from the
+mean}.
+
+\subparagraph{But why this extra
+effort?}\label{but-why-this-extra-effort}
+
+Standardizing is a way of getting rid of a variable's metric. In a
+situation with multiple variables, each variable may have a different
+standard deviation, but by dividing each variable by the respective
+standard deviation, it is possible to convert all variables into a scale
+of \textbf{standard units}. This sometimes may help in making variables
+comparable, for example, when assessing the relative impact of multiple
+predictors. For example, if you can imagine we have two questionnaires -
+one for extraversion where you scored 2 out of 10 and the other for
+grumpiness where you scored 35 out of 50, then it doesn't make a lot of
+sense to try to compare your raw score of 2 on the extraversion
+questionnaire to your raw score of 35 on the grumpiness questionnaire.
+The raw scores for the two variables are ``about'' fundamentally
+different things, so this would be like comparing apples to oranges. But
+if you standardize them, they will still become comparable in some
+sense.
+
+Let's also examine the score of 35 out of 50 for grumpiness. Would this
+mean that you're 70\% grumpy? Instead of interpreting raw data this way,
+it would make more sense if we describe your grumpiness in terms of the
+overall distribution of the grumpiness of humans which is possible
+through standardisation i.e.~where do you lie on the grumpiness spectrum
+of the all humans? ;)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Try it out yourself}
+\CommentTok{\#Define a vector with Grumpiness scores of you and your friends and find the z score for your self}
+\NormalTok{X }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{,}\DecValTok{72}\NormalTok{,}\DecValTok{89}\NormalTok{,}\DecValTok{113}\NormalTok{,}\DecValTok{137}\NormalTok{,}\DecValTok{170}\NormalTok{)                       }
+\NormalTok{z }\OtherTok{=}\NormalTok{ (X }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(X)) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(X)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.1251491 -0.8368547 -0.4284376  0.1481513  0.7247402  1.5175499
+\end{verbatim}
+
+\emph{Reference: Chapter 5, Winter B.}
+
+\paragraph{Correlation}\label{correlation}
+
+So far we have focused entirely on how to construct descriptive
+statistics for a single variable. We haven't talked about how to
+describe the relationships between variables in the data. To do that, we
+want to talk mostly about the correlation between variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(lsr)}
+\FunctionTok{library}\NormalTok{(psych)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'ggplot2'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:psych':
+## 
+##     %+%, alpha
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v lubridate 1.9.3     v tibble    3.2.1
+## v purrr     1.0.2     v tidyr     1.3.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x ggplot2::%+%()   masks psych::%+%()
+## x ggplot2::alpha() masks psych::alpha()
+## x dplyr::filter()  masks stats::filter()
+## x dplyr::lag()     masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Let\textquotesingle{}s load some data}
+\FunctionTok{load}\NormalTok{( }\StringTok{"parenthood.Rdata"}\NormalTok{ )}
+\FunctionTok{head}\NormalTok{(parenthood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   dan.sleep baby.sleep dan.grump day
+## 1      7.59      10.18        56   1
+## 2      7.91      11.66        60   2
+## 3      5.14       7.92        82   3
+## 4      7.71       9.61        55   4
+## 5      6.68       9.75        67   5
+## 6      5.99       5.04        72   6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(parenthood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100   4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Try describe() for the above dataframe}
+\FunctionTok{describe}\NormalTok{(parenthood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            vars   n  mean    sd median trimmed   mad   min    max range  skew
+## dan.sleep     1 100  6.97  1.02   7.03    7.00  1.09  4.84   9.00  4.16 -0.29
+## baby.sleep    2 100  8.05  2.07   7.95    8.05  2.33  3.25  12.07  8.82 -0.02
+## dan.grump     3 100 63.71 10.05  62.00   63.16  9.64 41.00  91.00 50.00  0.43
+## day           4 100 50.50 29.01  50.50   50.50 37.06  1.00 100.00 99.00  0.00
+##            kurtosis   se
+## dan.sleep     -0.72 0.10
+## baby.sleep    -0.69 0.21
+## dan.grump     -0.16 1.00
+## day           -1.24 2.90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Let\textquotesingle{}s also take a graphical look at the data }
+\FunctionTok{hist}\NormalTok{(parenthood}\SpecialCharTok{$}\NormalTok{dan.sleep)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Try plotting for the other 2 variables}
+\FunctionTok{hist}\NormalTok{(parenthood}\SpecialCharTok{$}\NormalTok{dan.grump)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(parenthood}\SpecialCharTok{$}\NormalTok{baby.sleep)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-4-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(parenthood}\SpecialCharTok{$}\NormalTok{day)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+But we now want to take a look at the relationship between two
+variables. n order to visualize that, it is better to plot a
+\textbf{scatter plot.} (Plotting graphs will be covered in detail a
+separate notebook).
+
+\emph{Brief note on Scatterplots:}
+
+In this kind of plot, each observation corresponds to one dot: the
+horizontal location of the dot plots the value of the observation on one
+variable, and the vertical location displays its value on the other
+variable. In many situations you don't really have a clear opinion about
+what the causal relationship is (e.g., does A cause B, or does B cause
+A, or does some other variable C controls both A and B). If that's the
+case, it doesn't really matter which variable you plot on the x-axis and
+which one you plot on the y-axis. However, in many situations you do
+have a pretty strong idea which variable you think is most likely to be
+causal, or at least you have some suspicions in that direction. If so,
+then it's conventional to plot the \textbf{cause} variable on the
+\textbf{x-axis}, and the \textbf{effect} variable on the
+\textbf{y-axis}.
+
+Suppose our goal is to draw a scatterplot displaying the relationship
+between the amount of sleep that Dan gets (dan.sleep) and how grumpy she
+is the next day (dan.grump). \emph{Do you suspect a causal relationship
+here?}
+
+A simple way to plot these scatter plots is to use the scatterplot()
+function in the car package.
+
+Let's load the package and get started.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"car"}\NormalTok{,}\AttributeTok{repos =} \StringTok{"http://cran.us.r{-}project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/hp/AppData/Local/R/win-library/4.4'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## package 'car' successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\hp\AppData\Local\Temp\RtmpeSIJEr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"Rcpp"}\NormalTok{,}\AttributeTok{repos =} \StringTok{"http://cran.us.r{-}project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/hp/AppData/Local/R/win-library/4.4'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## package 'Rcpp' successfully unpacked and MD5 sums checked
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: cannot remove prior installation of package 'Rcpp'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
+## C:\Users\hp\AppData\Local\R\win-library\4.4\00LOCK\Rcpp\libs\x64\Rcpp.dll to
+## C:\Users\hp\AppData\Local\R\win-library\4.4\Rcpp\libs\x64\Rcpp.dll: Permission
+## denied
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: restored 'Rcpp'
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## The downloaded binary packages are in
+##  C:\Users\hp\AppData\Local\Temp\RtmpeSIJEr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'car'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     recode
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     some
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:psych':
+## 
+##     logit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{( dan.grump }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dan.sleep, }\AttributeTok{data =}\NormalTok{ parenthood, }\AttributeTok{regLine =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{smooth =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatterplot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (x, ...) 
+## {
+##     UseMethod("scatterplot")
+## }
+## <bytecode: 0x0000020151e46258>
+## <environment: namespace:car>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Plot a scatter plot for baby.sleep and dan.grump variables}
+\FunctionTok{scatterplot}\NormalTok{(baby.sleep}\SpecialCharTok{\textasciitilde{}}\NormalTok{dan.grump, }\AttributeTok{data=}\NormalTok{parenthood,}\AttributeTok{regLine=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{FALSE}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+Just by plain observation and comparison, you can see that the
+relationship is qualitatively the same in both cases: more sleep equals
+less grump! However, it's also pretty obvious that the relationship
+between dan.sleep and dan.grump is stronger than the relationship
+between baby.sleep and dan.grump.
+
+But what about the plot between baby.sleep and dan.sleep?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Plot baby sleep and dan sleep here}
+\FunctionTok{scatterplot}\NormalTok{(baby.sleep}\SpecialCharTok{\textasciitilde{}}\NormalTok{dan.sleep, }\AttributeTok{data =}\NormalTok{ parenthood, }\AttributeTok{regLine=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+Is the direction of this plot same as the earlier plots? What about
+strength?
+
+\subparagraph{Correlation coefficient}\label{correlation-coefficient}
+
+In order to to quantitatively represent the relationships of strength
+and direction we discussed above, we can use correlation coefficient.
+
+The correlation coefficient (or Pearson's correlation coefficient)
+between two variables X and Y (sometimes denoted
+\emph{r\textsubscript{XY}} ) is a measure that varies from -1 to 1. When
+\emph{r} = -1 it means that we have a perfect negative relationship, and
+when \emph{r} = 1 it means we have a perfect positive relationship. When
+\emph{r} = 0, there's no relationship at all.
+
+Look at the plots for different \emph{r} values:
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/fig4.png}
+\caption{Correlation plots}
+\end{figure}
+
+\subparagraph{Covariance}\label{covariance}
+
+The covariance between two variables X and Y is a generalisation of the
+notion of the variance; it's a mathematically simple way of describing
+the relationship between two variables:
+
+\begin{align*}
+ 
+ Cov (X, Y) = \frac{1}{N-1}\sum_{i=1}^{N} (X- \overline{X} ) (Y- \overline{Y} )  \\
+ 
+ \end{align*}
+
+Covariance can be understood as an ``average cross product'' between X
+and Y . The covariance has the nice property that, if X and Y are
+entirely unrelated, then the covariance is exactly zero. If it is
+positive, then the covariance is also positive; and if the relationship
+is negative then the covariance is also negative. But as it has weird
+units (try seeing for yourself), it si difficult to interpret and
+therefore we standardise the covariance, the exact same way that the
+z-score standardises a raw score: by dividing by the standard deviation.
+However, because we have two variables that contribute to the
+covariance, the standardisation only works if we divide by both standard
+deviations.
+
+This is what we call as the correlation coefficent, \emph{r}:
+
+\begin{align*}
+
+ r~XY~ = \frac{Cov(X,Y)}{\sigma_{X} \sigma_{Y}}
+
+\end{align*}
+
+This way, covariance properties are retained and it also becomes
+interpretable.
+
+Now let's check out how to code this using cor().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\AttributeTok{x =}\NormalTok{ parenthood}\SpecialCharTok{$}\NormalTok{dan.sleep, }\AttributeTok{y =}\NormalTok{ parenthood}\SpecialCharTok{$}\NormalTok{dan.grump)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.903384
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{correlate}\NormalTok{(parenthood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
+## 
+##            dan.sleep baby.sleep dan.grump    day
+## dan.sleep          .      0.628    -0.903 -0.098
+## baby.sleep     0.628          .    -0.566 -0.010
+## dan.grump     -0.903     -0.566         .  0.076
+## day           -0.098     -0.010     0.076      .
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Try giving the entire dataframe \textquotesingle{}parenthood\textquotesingle{} as input in cor()}
+\end{Highlighting}
+\end{Shaded}
+
+What did you find?
+
+\subparagraph{What does r = 0.4 mean?}\label{what-does-r-0.4-mean}
+
+It really depends on what you want to use the data for, and on how
+strong the correlations in your field tend to be.
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/fig5.png}
+\caption{Correlation coefficient interpretation table}
+\end{figure}
+
+Now let's take a look at this data called ``Anscombe's Quartet''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{( }\StringTok{"anscombesquartet.Rdata"}\NormalTok{ )}
+\FunctionTok{cor}\NormalTok{( X1, Y1 )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8164205
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{( X2, Y2 )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8162365
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{ (X3, Y3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8162867
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{ (X4, Y4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8165214
+\end{verbatim}
+
+Were the correlation coefficients same?
+
+Now try plotting them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{(x1}\SpecialCharTok{\textasciitilde{}}\NormalTok{y1,}\AttributeTok{data=}\NormalTok{anscombe,}\AttributeTok{regLine=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{(x2}\SpecialCharTok{\textasciitilde{}}\NormalTok{y2,}\AttributeTok{data=}\NormalTok{anscombe,}\AttributeTok{regLine=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{(x3}\SpecialCharTok{\textasciitilde{}}\NormalTok{y3,}\AttributeTok{data=}\NormalTok{anscombe,}\AttributeTok{regLine=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-11-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{(x4}\SpecialCharTok{\textasciitilde{}}\NormalTok{y4,}\AttributeTok{data=}\NormalTok{anscombe,}\AttributeTok{regLine=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{smooth=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-11-4.pdf}
+
+Therefore, remember to always look at the scatterplot before attaching
+any interpretation to the data!
+
+If we have to properly define the role of Pearson's coefficient, we can
+say that it actually measures the strength of the linear relationship
+between two variables. In other words, it gives a measure of the extent
+to which the data all tend to fall on a single, perfectly straight line.
+
+\subparagraph{Spearman's Rank Order Correlation
+Coefficient}\label{spearmans-rank-order-correlation-coefficient}
+
+But let's take a look at another dataset and find correlation between
+its variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{( }\StringTok{"effort.Rdata"}\NormalTok{ )}
+\NormalTok{effort}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    hours grade
+## 1      2    13
+## 2     76    91
+## 3     40    79
+## 4      6    14
+## 5     16    21
+## 6     28    74
+## 7     27    47
+## 8     59    85
+## 9     46    84
+## 10    68    88
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{( effort}\SpecialCharTok{$}\NormalTok{hours, effort}\SpecialCharTok{$}\NormalTok{grade )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.909402
+\end{verbatim}
+
+If you plot this -
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplot}\NormalTok{(effort}\SpecialCharTok{$}\NormalTok{hours, effort}\SpecialCharTok{$}\NormalTok{grade, }\AttributeTok{regLine =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{smooth =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Module3_Nb2_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+The correlation \emph{r} = 0.91 we get above doe snot represent the
+actual relationship the plot is depicting. What we're looking for is
+something that captures the fact that there is a perfect \textbf{ordinal
+relationship} here. That is, if student 1 works more hours than student
+2, then we can guarantee that student 1 will get the better grade.
+
+If we're looking for ordinal relationships, all we have to do is treat
+the data as if it were ordinal scale! So, instead of measuring effort in
+terms of ``hours worked'', let's rank all 10 of the students in order of
+hours worked. That is, student 1 did the least work out of anyone (2
+hours) so they get the lowest rank (rank = 1). Student 4 was the next
+laziest, putting in only 6 hours of work in over the whole semester, so
+they get the next lowest rank (rank = 2).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hours.rank }\OtherTok{\textless{}{-}} \FunctionTok{rank}\NormalTok{( effort}\SpecialCharTok{$}\NormalTok{hours )   }\CommentTok{\# rank students by hours worked}
+\NormalTok{grade.rank }\OtherTok{\textless{}{-}} \FunctionTok{rank}\NormalTok{( effort}\SpecialCharTok{$}\NormalTok{grade )   }\CommentTok{\# rank students by grade received}
+
+\CommentTok{\#Now try cor() function for these}
+\FunctionTok{cor}\NormalTok{( hours.rank, grade.rank )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Now the correlation coefficient we get is different from the Perason's
+correlation coefficient \emph{r} we got earlier. This new correlation
+coefficient that we got is called `\textbf{Spearman's Correlation
+Coefficient}', denoted by \(\rho\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Execute this and compare with the correlation coefficient we got above}
+\FunctionTok{cor}\NormalTok{( effort}\SpecialCharTok{$}\NormalTok{hours, effort}\SpecialCharTok{$}\NormalTok{grade, }\AttributeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\subparagraph{Handling missing values}\label{handling-missing-values}
+
+We've seen in earlier lectures that there could be missing values in
+data which are represented by \texttt{NA} in R. One easy way to remove
+them is using \texttt{na.rm\ =\ TRUE} as argument in many functions.
+
+But what if we have missing values in a dataframe where we have to find
+correlations across variables.
+
+Let's look at such a dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{( }\StringTok{"parenthood2.Rdata"}\NormalTok{ )}
+\FunctionTok{print}\NormalTok{( parenthood2 )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     dan.sleep baby.sleep dan.grump day
+## 1        7.59         NA        56   1
+## 2        7.91      11.66        60   2
+## 3        5.14       7.92        82   3
+## 4        7.71       9.61        55   4
+## 5        6.68       9.75        NA   5
+## 6        5.99       5.04        72   6
+## 7        8.19      10.45        53   7
+## 8        7.19       8.27        60   8
+## 9        7.40       6.06        NA   9
+## 10       6.58       7.09        71  10
+## 11       6.49      11.68        72  11
+## 12       6.27       6.13        65  12
+## 13       5.95       7.83        74  13
+## 14       6.65       5.60        67  14
+## 15       6.41       6.03        66  15
+## 16       6.33       8.19        69  16
+## 17       6.30       6.38        73  17
+## 18       8.47      11.11        52  18
+## 19       7.21       5.51        61  19
+## 20       7.53       6.69        53  20
+## 21       8.00       9.74        54  21
+## 22       7.35       9.02        63  22
+## 23       6.86       6.44        74  23
+## 24       7.86       9.43        56  24
+## 25       4.86       3.46        82  25
+## 26       5.87       6.32        72  26
+## 27       8.40       7.95        NA  27
+## 28         NA       7.69        66  28
+## 29       7.21       7.45        60  29
+## 30       6.99         NA        67  30
+## 31       8.17       7.95        44  31
+## 32       7.85         NA        53  32
+## 33       6.27       4.70        76  33
+## 34       8.66       8.52        41  34
+## 35       4.98       4.70        86  35
+## 36       6.19       8.32        60  36
+## 37       6.41       9.38        63  37
+## 38       4.84       4.18        89  38
+## 39       7.03       5.98        61  39
+## 40       7.66       9.29        57  40
+## 41       7.51         NA        59  41
+## 42       7.92      10.54        60  42
+## 43       8.12      11.78        48  43
+## 44       7.47      11.60        53  44
+## 45       7.99      11.35        50  45
+## 46       5.44       5.63        72  46
+## 47       8.16       6.98        57  47
+## 48       7.62       6.03        60  48
+## 49       5.87       4.66        70  49
+## 50       9.00       9.81        46  50
+## 51       8.31      12.07        58  51
+## 52       6.71       7.57        68  52
+## 53       7.43      11.35        58  53
+## 54       5.90         NA        71  54
+## 55       8.52       8.29        52  55
+## 56       6.03         NA        74  56
+## 57       7.29         NA        59  57
+## 58       7.32       8.59        59  58
+## 59       6.88       7.82        67  59
+## 60       6.22       7.18        67  60
+## 61       6.94       8.29        61  61
+## 62       7.01      11.08        64  62
+## 63         NA       6.46        61  63
+## 64         NA       3.25        61  64
+## 65         NA       9.74        54  65
+## 66       7.82       8.75        62  66
+## 67       8.14      11.75        52  67
+## 68       7.27       9.31        64  68
+## 69         NA       7.73        65  69
+## 70       7.55       8.68        NA  70
+## 71       7.38       9.77        57  71
+## 72       7.73       9.71        59  72
+## 73       5.32         NA        79  73
+## 74       7.86      10.18        53  74
+## 75       6.35       9.28        NA  75
+## 76       7.11         NA        61  76
+## 77       5.45       6.38        82  77
+## 78       7.80       9.20        68  78
+## 79       7.13       8.20        67  79
+## 80       8.35      10.16        54  80
+## 81       6.93       8.95        53  81
+## 82         NA       6.80        62  82
+## 83       8.66       8.34        50  83
+## 84       5.09       6.25        NA  84
+## 85       4.91         NA        NA  85
+## 86       7.03       9.09        62  86
+## 87       7.02      10.42        64  87
+## 88         NA       8.89        57  88
+## 89       8.15       9.43        54  89
+## 90       5.88       6.79        NA  90
+## 91         NA       6.91        78  91
+## 92       6.66       6.05        63  92
+## 93       6.85         NA        59  93
+## 94       5.57       8.62        74  94
+## 95       5.16       7.84        76  95
+## 96         NA       5.89        79  96
+## 97       7.77       9.77        51  97
+## 98       5.38       6.97        82  98
+## 99       7.02       6.56        55  99
+## 100      6.45       7.93        74 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{describe}\NormalTok{( parenthood2 ) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            vars   n  mean    sd median trimmed   mad   min    max range  skew
+## dan.sleep     1  91  6.98  1.02   7.03    7.02  1.13  4.84   9.00  4.16 -0.33
+## baby.sleep    2  89  8.11  2.05   8.20    8.13  2.28  3.25  12.07  8.82 -0.09
+## dan.grump     3  92 63.15  9.85  61.00   62.66 10.38 41.00  89.00 48.00  0.38
+## day           4 100 50.50 29.01  50.50   50.50 37.06  1.00 100.00 99.00  0.00
+##            kurtosis   se
+## dan.sleep     -0.73 0.11
+## baby.sleep    -0.59 0.22
+## dan.grump     -0.31 1.03
+## day           -1.24 2.90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Check how many missing values are there for each variable {-} compare the values in \textquotesingle{}n\textquotesingle{} with the number of days.}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let's try finding correlations for this dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(parenthood2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            dan.sleep baby.sleep dan.grump day
+## dan.sleep          1         NA        NA  NA
+## baby.sleep        NA          1        NA  NA
+## dan.grump         NA         NA         1  NA
+## day               NA         NA        NA   1
+\end{verbatim}
+
+In order top overcome this problem, we can use \texttt{use} as an
+argument in the cor() function. Try out the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(parenthood2, }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              dan.sleep baby.sleep   dan.grump         day
+## dan.sleep   1.00000000  0.6394985 -0.89951468  0.06132891
+## baby.sleep  0.63949845  1.0000000 -0.58656066  0.14555814
+## dan.grump  -0.89951468 -0.5865607  1.00000000 -0.06816586
+## day         0.06132891  0.1455581 -0.06816586  1.00000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(parenthood2, }\AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              dan.sleep  baby.sleep    dan.grump          day
+## dan.sleep   1.00000000  0.61472303 -0.903442442 -0.076796665
+## baby.sleep  0.61472303  1.00000000 -0.567802669  0.058309485
+## dan.grump  -0.90344244 -0.56780267  1.000000000  0.005833399
+## day        -0.07679667  0.05830949  0.005833399  1.000000000
+\end{verbatim}
+
+When we choose \texttt{use\ =\ "complete.obs"}, R will completely ignore
+all cases (i.e., all rows in our parenthood2 data frame) that have any
+missing values at all. For eg., if you choose use = ``complete.obs'' R
+will ignore that row completely: that is, even when it's trying to
+calculate the correlation between dan.sleep and dan.grump, observation 1
+will be ignored, because the value of baby.sleep is missing for that
+observation.
+
+Whereas when we set \texttt{use\ =\ "pairwise.complete.obs"} R only
+looks at the variables that it's trying to correlate when determining
+what to drop. So, for instance, since the only missing value for
+observation 1 of parenthood2 is for baby.sleep R will only drop
+observation 1 when baby.sleep is one of the variables involved: and so R
+keeps observation 1 when trying to correlate dan.sleep and dan.grump.
+
+The above operation can also be performed by another function called
+\texttt{correlate()} in \texttt{lsr} package. \#displays pairwise
+spearman correlations Try it out.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Try correlate() for parenthood2 here}
+\FunctionTok{correlate}\NormalTok{(parenthood2,}\AttributeTok{corr.method =} \StringTok{"pearson"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
+## 
+##            dan.sleep baby.sleep dan.grump    day
+## dan.sleep          .      0.615    -0.903 -0.077
+## baby.sleep     0.615          .    -0.568  0.058
+## dan.grump     -0.903     -0.568         .  0.006
+## day           -0.077      0.058     0.006      .
+\end{verbatim}
+
+\emph{Reference : Chapter 5, D. Navarro}
+
+That's all folks!
+
+\end{document}

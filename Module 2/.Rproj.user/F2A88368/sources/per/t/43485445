@@ -1,0 +1,27 @@
+{
+    "id": "43485445",
+    "path": "~/GitHub/BSE658/Module 3/Notebooks/Distributions_part2.Rmd",
+    "project_path": null,
+    "type": "r_markdown",
+    "hash": "886851511",
+    "contents": "",
+    "dirty": false,
+    "created": 1726046489230.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "93,6",
+        "scrollLine": "91"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1726069085,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1726069085696,
+    "read_only": false,
+    "read_only_alternatives": []
+}

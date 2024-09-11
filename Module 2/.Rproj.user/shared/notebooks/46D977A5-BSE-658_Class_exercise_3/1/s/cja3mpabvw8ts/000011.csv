@@ -1,0 +1,2 @@
+"0","#boxplot based on education to show outliers "
+"0","ggplot(data=df, aes(x=wages)) +geom_boxplot()"

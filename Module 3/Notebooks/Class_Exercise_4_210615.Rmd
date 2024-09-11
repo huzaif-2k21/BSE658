@@ -1,0 +1,103 @@
+---
+title: "Class_Exercise_4_210615"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+date: "2024-09-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+library(ggplot2)
+library(lsr)
+library(psych)
+library(tidyverse)
+```
+```{r}
+install.packages("ggcorrplot", repos = "http://cran.us.r-project.org")
+library(ggcorrplot)
+```
+#USED an uknown dataset of 79 urine specimens which were analyzed in an effort to determine if certain physical characteristics of the urine might be related to the formation of calcium oxalate crystals.
+#conatins 7 variables and 77 rows(dropping the rownumber var)
+```{r}
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/")
+filed <- read.csv("urine.csv",sep = ",",header = TRUE)
+filed
+filed <- filed %>% drop_na()
+filed <- subset(filed, select = c(r,gravity,ph,osmo,cond,urea,calc))
+filed
+correlation <- cor(filed)
+data.frame(correlation)
+p.mat <- cor_pmat(correlation)
+```
+```{r}
+ggcorrplot(correlation)
+```
+
+```{r}
+# method = "circle"
+ggcorrplot(correlation, method = "circle")
+```
+
+```{r}
+# Reordering the correlation matrix
+# --------------------------------
+# using hierarchical clustering
+ggcorrplot(correlation, hc.order = TRUE, outline.col = "white")
+```
+```{r}
+ggcorrplot(correlation, hc.order = TRUE, type = "lower",
+     outline.col = "white")
+```
+```{r}
+ggcorrplot(correlation, hc.order = TRUE, type = "upper",
+     outline.col = "white")
+```
+# Add correlation coefficients
+# --------------------------------
+# argument lab = TRUE
+```{r}
+ggcorrplot(correlation, hc.order = TRUE, type = "lower",
+   outline.col = "white",
+   ggtheme = ggplot2::theme_gray,
+   colors = c("#6D9EC1", "white", "#E46726"))
+```
+# Add correlation significance level
+# --------------------------------
+# Argument p.mat
+# Barring the no significant coefficient
+```{r}
+ggcorrplot(correlation, hc.order = TRUE, type = "lower",
+   lab = TRUE)
+```
+# Leave blank on no significant coefficient
+```{r}
+ggcorrplot(correlation, p.mat = p.mat, hc.order = TRUE,
+    type = "lower", insig = "blank")
+```
+
+

@@ -1,0 +1,4 @@
+"0","dc <- aggregate( wages ~ education + sex, "
+"0","           data = df,"
+"0","           FUN = mean)"
+"0","filter(dc, wages==max(dc$wages))"

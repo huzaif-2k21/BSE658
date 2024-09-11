@@ -1,0 +1,153 @@
+---
+title: "class_exercise_3"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+date: "2024-08-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+df <- read.csv(file='C:/Users/hp/Documents/GitHub/BSE658/Module 2/SLID.csv',sep=",",header = 1)
+head(df)
+dim(df)
+```
+#Survey of Labour and Income Dynamics from Ontario Province
+```{r}
+df <- na.omit(df)
+head(df)
+library(lsr)
+hist(df$wages)
+```
+```{r}
+library(ggplot2)
+library(psych)
+library(lsr)
+library(dplyr)
+library(tidyverse)
+#plot based on education vs wages and classified by language
+ggplot(data=df, aes(x=education,y=wages, colour = language)) +geom_point(alpha=0.7)
+```
+```{r}
+#plot based on education vs wages and classified by language
+ggplot(data=df, aes(x=education,y=wages, colour = sex)) +geom_point(alpha = 0.7)
+```
+
+```{r}
+#boxplot based on education to show outliers
+ggplot(data=df, aes(x=education)) +geom_boxplot()
+```
+```{r}
+#boxplot based on education to show outliers 
+ggplot(data=df, aes(x=wages)) +geom_boxplot()
+```
+
+
+```{r}
+mean(df$wages)
+median(df$wages)
+range(df$wages)
+var(df$wages)
+sd(df$wages)
+```
+```{r}
+mean(df$education)
+median(df$education)
+range(df$education)
+var(df$education)
+sd(df$education)
+```
+#This segment shows majority no of workers are females and people of age 32 are in maximum number and most of them are high school pass i.e. 12 year education
+```{r}
+mean(df$wages, trim = 0.1)
+median(df$wages, trim=0.1)
+modeOf(df$wages)
+modeOf(df$education)
+modeOf(df$sex)
+modeOf(df$age)
+```
+```{r}
+#finding median and inter quartile range 
+median(df$age)
+quantile(df$wages,c(0.25, 0.5,0.75))
+```
+```{r}
+summary(df$wages)
+describe(df$wages)
+```
+```{r}
+summary(df)
+```
+```{r}
+df <- select(df, c(wages,education,age,sex,language))
+by(data=df, INDICES = df$age,FUN = describe)
+```
+#description on basis of groups of languages
+```{r}
+by(data=df, INDICES = df$language,FUN = summary)
+```
+
+#description on basis of groups of male and female
+```{r}
+by(data=df, INDICES = df$sex,FUN = summary)
+```
+#grouping age and sex  with wages (agregates of that groups)
+```{r}
+cdc <- aggregate( wages ~ age + sex, 
+           data = df,
+           FUN = mean) 
+cdc
+```
+#crossverified here the above grouping data
+```{r}
+abc <- filter(df, age==16) %>% filter(sex=="Female") %>% select(wages)
+mean(abc$wages)
+```
+#maximum agregate earning age wise of the age group:
+```{r}
+filter(cdc, wages==max(cdc$wages))
+```
+
+```{r}
+aggregate( wages ~ education + sex, 
+           data = df,
+           FUN = mean) 
+```
+#maximum aggregate earning education wise of group:
+```{r}
+dc <- aggregate( wages ~ education + sex, 
+           data = df,
+           FUN = mean)
+filter(dc, wages==max(dc$wages))
+```
+inferences: i. loaded and visually checked data to see distribution based on different categories such as : age vs wages and education vs wages with categorization on basis on gender and languages 
+ii. plotted box plot to visaulise central tendancies and outliers
+iii. found out the central tendencies of diff coloumn data and checked its skewness along with range and spread.
+iv described data on diff variables with single and more than 1 also(grouping of variables)
+v drawn out various conclusions at the end
+

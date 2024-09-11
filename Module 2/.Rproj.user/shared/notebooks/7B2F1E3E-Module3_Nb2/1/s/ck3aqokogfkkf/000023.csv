@@ -1,0 +1,1 @@
+"0","scatterplot(x2~y2,data=anscombe,regLine=FALSE,smooth=TRUE)"

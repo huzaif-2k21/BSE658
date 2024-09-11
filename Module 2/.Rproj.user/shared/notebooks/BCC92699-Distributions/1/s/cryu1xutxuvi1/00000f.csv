@@ -1,0 +1,6 @@
+"0","pants <- data.frame("
+"0","   type = c(""Blue jeans"",""Grey jeans"",""Black jeans"",""Black suit"",""Blue tracksuit""),"
+"0","   label = c(""X1"", ""X2"", ""X3"", ""X4"", ""X5""),"
+"0","   probability = c(0.5,0.3,0.1,0,0.1))"
+"0",""
+"0","pants"

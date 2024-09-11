@@ -1,0 +1,6 @@
+"0","#Execute this and compare with the correlation coefficient we got above"
+"0","cor( effort$hours, effort$grade, method = ""spearman"")"
+"1","[1]"
+"1"," 1"
+"1","
+"

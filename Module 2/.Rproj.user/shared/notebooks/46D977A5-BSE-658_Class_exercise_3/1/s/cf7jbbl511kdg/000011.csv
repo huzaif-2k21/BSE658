@@ -1,0 +1,2 @@
+"0","#plot based on education vs wages and classified by language"
+"0","ggplot(data=df, aes(x=education,y=wages, colour = sex)) +geom_point(alpha = 0.7)"

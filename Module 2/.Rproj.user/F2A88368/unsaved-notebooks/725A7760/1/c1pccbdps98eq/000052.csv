@@ -1,0 +1,17 @@
+"0","hist(cd, bins=6)"
+"2","Warning in plot.window(xlim, ylim, """", ...) :"
+"2","
+ "
+"2"," ""bins"" is not a graphical parameter
+"
+"2","Warning in title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...) :"
+"2","
+ "
+"2"," ""bins"" is not a graphical parameter
+"
+"2","Warning in axis(1, ...) :"
+"2"," ""bins"" is not a graphical parameter
+"
+"2","Warning in axis(2, at = yt, ...) :"
+"2"," ""bins"" is not a graphical parameter
+"

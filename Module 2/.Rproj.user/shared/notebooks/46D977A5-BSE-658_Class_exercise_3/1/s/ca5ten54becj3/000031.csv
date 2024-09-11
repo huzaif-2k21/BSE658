@@ -1,0 +1,2 @@
+"0","df <- read.csv(file='C:/Users/hp/Documents/GitHub/BSE658/Module 2/SLID.csv',sep="","",header = 1)"
+"0","head(df)"

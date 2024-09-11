@@ -1,0 +1,7 @@
+"0","#Find the probability of rolling 0 skulls or 1 skull or 2 skulls or 3 skulls or 4 skulls"
+"0","pbinom( q= 4, size = 20, prob = 1/6)"
+"1","[1]"
+"1"," 0.7687492"
+"1","
+"
+"0","#Practice - Find probability of getting 0-5 heads in 50 trials of coin flip"

@@ -1,6 +1,8 @@
 ---
-title: "Descriptive Statistics: Scaling and Correlations"
-output: html_notebook
+title: 'Descriptive Statistics: Scaling and Correlations'
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 After taking a first look at our data in the last notebook, now we want to start looking at it more closely as per our needs and requirements. 
@@ -54,8 +56,9 @@ Let's also examine the score of 35 out of 50 for grumpiness. Would this mean tha
 ```{r}
 #Try it out yourself
 #Define a vector with Grumpiness scores of you and your friends and find the z score for your self
-X =                        
+X = c(60,72,89,113,137,170)                       
 z = (X - mean(X)) / sd(X)
+z
 ```
 
 _Reference: Chapter 5, Winter B._
@@ -65,15 +68,20 @@ _Reference: Chapter 5, Winter B._
 So far we have focused entirely on how to construct descriptive statistics for a single variable. We haven’t talked about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the correlation between variables.
 
 ```{r}
-setwd("/Users/lenovo1/Desktop/mtech/courses/stats/Datasets/data/")
-
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/")
+library(lsr)
+library(psych)
+library(ggplot2)
+library(tidyverse)
 #Let's load some data
 load( "parenthood.Rdata" )
-who(TRUE)
+head(parenthood)
+dim(parenthood)
 ```
 
 ```{r}
 #Try describe() for the above dataframe
+describe(parenthood)
 ```
 
 
@@ -82,6 +90,9 @@ who(TRUE)
 hist(parenthood$dan.sleep)
 
 #Try plotting for the other 2 variables
+hist(parenthood$dan.grump)
+hist(parenthood$baby.sleep)
+hist(parenthood$day)
 
 ```
 
@@ -98,19 +109,20 @@ A simple way to plot these scatter plots is to use the scatterplot() function in
 Let's load the package and get started.
 
 ```{r}
-install.packages("car")
-install.packages("Rcpp")
+install.packages("car",repos = "http://cran.us.r-project.org")
+install.packages("Rcpp",repos = "http://cran.us.r-project.org")
 ```
 
 
 ```{r}
 library(car)
-scatterplot( dan.grump ~ dan.sleep, data = parenthood, regLine = FALSE, smooth = FALSE)
+scatterplot( dan.grump ~ dan.sleep, data = parenthood, regLine = TRUE, smooth = FALSE)
 scatterplot
 ```
 
 ```{r}
 #Plot a scatter plot for baby.sleep and dan.grump variables
+scatterplot(baby.sleep~dan.grump, data=parenthood,regLine=TRUE,smooth=FALSE )
 ```
 
 
@@ -120,6 +132,7 @@ But what about the plot between baby.sleep and dan.sleep?
 
 ```{r}
 #Plot baby sleep and dan sleep here
+scatterplot(baby.sleep~dan.sleep, data = parenthood, regLine=TRUE,smooth=FALSE)
 ```
 
 Is the direction of this plot same as the earlier plots? What about strength?
@@ -132,7 +145,7 @@ The correlation coefficient (or Pearson's correlation coefficient) between two v
 
 Look at the plots for different _r_ values:
 
-![Correlation plots](/Users/lenovo1/Desktop/mtech/courses/stats/Images/fig4.png)
+![Correlation plots](C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/fig4.png)
 
 ##### Covariance
 
@@ -160,6 +173,7 @@ Now let's check out how to code this using cor().
 
 ```{r}
 cor(x = parenthood$dan.sleep, y = parenthood$dan.grump)
+correlate(parenthood)
 
 #Try giving the entire dataframe 'parenthood' as input in cor()
 ```
@@ -170,7 +184,7 @@ What did you find?
 
 It really depends on what you want to use the data for, and on how strong the correlations in your field tend to be.
 
-![Correlation coefficient interpretation table](/Users/lenovo1/Desktop/mtech/courses/stats/Images/fig5.png)
+![Correlation coefficient interpretation table](C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/fig5.png)
  
 Now let's take a look at this data called "Anscombe's Quartet"
  
@@ -187,7 +201,10 @@ Were the correlation coefficients same?
 Now try plotting them.
 
 ```{r}
-scatterplot()
+scatterplot(x1~y1,data=anscombe,regLine=FALSE,smooth=TRUE)
+scatterplot(x2~y2,data=anscombe,regLine=FALSE,smooth=TRUE)
+scatterplot(x3~y3,data=anscombe,regLine=FALSE,smooth=TRUE)
+scatterplot(x4~y4,data=anscombe,regLine=FALSE,smooth=TRUE)
 ```
 
 Therefore, remember to always look at the scatterplot before attaching any interpretation to the data!
@@ -199,7 +216,7 @@ If we have to properly define the role of Pearson's coefficient, we can say that
 But let's take a look at another dataset and find correlation between its variables.
 
 ```{r}
-setwd("/Users/lenovo1/Desktop/mtech/courses/stats/Datasets/data/")
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 3/Notebooks/")
 load( "effort.Rdata" )
 effort
 cor( effort$hours, effort$grade )
@@ -263,10 +280,11 @@ When we choose `use = "complete.obs"`, R will completely ignore all cases (i.e.,
 Whereas when we set `use = "pairwise.complete.obs"` R only looks at the variables that it’s trying to correlate when determining what to drop. So, for instance, since the only missing value for observation 1 of parenthood2 is for baby.sleep R will only drop observation 1 when baby.sleep is one of the variables involved: and so R keeps observation 1 when trying to correlate dan.sleep and dan.grump.
 
 The above operation can also be performed by another function called `correlate()` in `lsr` package.
-
+#displays pairwise spearman correlations
 Try it out.
 ```{r}
 #Try correlate() for parenthood2 here
+correlate(parenthood2,corr.method = "pearson")
 ```
 
 _Reference : Chapter 5, D. Navarro_

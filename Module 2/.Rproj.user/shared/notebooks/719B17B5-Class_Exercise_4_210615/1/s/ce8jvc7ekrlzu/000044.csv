@@ -1,0 +1,3 @@
+"0","filed <- filed %>% drop_na()"
+"0","filed <- subset(filed, select = c(r,gravity,ph,osmo,cond,urea,calc))"
+"0","filed"

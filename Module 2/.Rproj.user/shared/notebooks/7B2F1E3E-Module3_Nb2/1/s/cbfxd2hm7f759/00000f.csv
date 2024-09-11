@@ -1,0 +1,1 @@
+"0","scatterplot(effort$hours, effort$grade, regLine = TRUE, smooth = FALSE)"

@@ -1,0 +1,1 @@
+"0","plot(norm$mids,norm$density, type=""l"",col=""blue"",lwd=3)"
