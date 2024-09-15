@@ -1,0 +1,6 @@
+"0",""
+"0","#A third type using plotmeans()"
+"0",""
+"0","plotmeans( formula = attendance ~ year,  # outcome ~ group"
+"0","           data = afl,                   # data frame with the variables"
+"0","           n.label = FALSE)              # don’t show the sample sizes"

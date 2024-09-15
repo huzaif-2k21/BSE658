@@ -1,0 +1,4 @@
+"0","#mean_hist <- hist(means) #Plotting the sampling distribution of the mean"
+"0","#sd_hist <- hist(sd_norm)"
+"0","#plot(mean_hist$mids,mean_hist$density, type=""l"",col=""blue"",lwd=3)"
+"0","#plot(sd_hist$mids,sd_hist$density, type=""l"",col=""blue"",lwd=3)"

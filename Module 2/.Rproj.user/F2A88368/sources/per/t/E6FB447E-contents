@@ -119,6 +119,8 @@ What if we decide to replicate this experiment? We will sample 5 people once aga
 ```{r}
 IQ.2 <- round(rnorm(n=5, mean = 100, sd = 15))
 IQ.2
+mean(IQ.2)
+sd(IQ.2)
 ```
 
 Let's say we do 10 such replications
@@ -152,11 +154,35 @@ hist(mean_dist) #Plotting the sampling distribution of the mean
 ```{r}
 #Let's assume we replicated our sample 10,000 times. 
 means <- 0 #Initializing vector
+sd_norm <- 0
 for (i in 1:10000) {
-  IQ.n <- round(rnorm(n=5, mean = 100, sd = 15))
+  IQ.n <- round(rnorm(n=100000, mean = 100, sd = 15))
   means[i] <- mean(IQ.n)
+  sd_norm[i] <- sd(IQ.n)
+  
 }
-hist(means) #Plotting the sampling distribution of the mean
+mean_hist <- hist(means) #Plotting the sampling distribution of the mean
+sd_hist <- hist(sd_norm)
+plot(mean_hist$mids,mean_hist$density, type="l",col="blue",lwd=3)
+plot(sd_hist$mids,sd_hist$density, type="l",col="blue",lwd=3)
+```
+```{r}
+#Let's assume we replicated our sample 10,000 times. 
+means <- 0 #Initializing vector
+sd_norm <- 0
+for (i in 1:10) {
+  IQ.n <- round(rnorm(n=100, mean = 100, sd = 15))
+  ssd.n <- sqrt(((IQ.n-mean(IQ.n))^2)/(length(IQ.n)))
+  means[i] <- mean(IQ.n)
+  sd_norm[i] <- sd(IQ.n)
+  
+}
+hist(ssd)
+hist(sd_norm)
+#mean_hist <- hist(means) #Plotting the sampling distribution of the mean
+#sd_hist <- hist(sd_norm)
+#plot(mean_hist$mids,mean_hist$density, type="l",col="blue",lwd=3)
+#plot(sd_hist$mids,sd_hist$density, type="l",col="blue",lwd=3)
 ```
 
 
@@ -315,7 +341,7 @@ library(lsr)
 
 
 ```{r}
-#load('afl24.Rdata')
+load('afl24.Rdata')
 ciMean( x = afl$attendance, conf = 0.95 ) #Calculating confidence interval using ciMean function from lsr package
 ```
 
@@ -329,7 +355,7 @@ Let's quickly take a look at how to plot CIs.
 For eg. if we want to plot the cofidence interval of afl$attendance
 
 ```{r}
-#install.packages('sciplot')
+install.packages('sciplot')
 install.packages('gplots')
 ```
 

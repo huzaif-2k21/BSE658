@@ -1,0 +1,1 @@
+"0","plot(mean_hist$mids,mean_hist$density, type=""l"",col=""blue"",lwd=3)"

@@ -1,0 +1,7 @@
+"0","#Here’s how to plot the means and confidence intervals drawn using bargraph.CI() from sciplot"
+"0","bargraph.CI( x.factor = year,             # grouping variable"
+"0","             response = attendance,       # outcome variable"
+"0","             data = afl,                  # data frame with the variables"
+"0","             ci.fun= ciMean,              # name of the function to calculate CIs"
+"0","             xlab = ""Year"",               # x-axis label"
+"0","             ylab = ""Average Attendance"") # y-axis label "
