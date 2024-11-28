@@ -1,0 +1,4 @@
+"0",""
+"0","ggplot(data=storms, aes(x = lat, y = long, color = category)) +"
+"0","  geom_point() +"
+"0","  labs(title = ""Loction of storms"")"

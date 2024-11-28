@@ -1,0 +1,30 @@
+"0",""
+"0","# Calculate bootstrapped confidence intervals for 'dep_delay' coefficient"
+"0","boot_ci_dep_delay <- boot.ci(boot_results, type = ""norm"", index = 2)"
+"0","print(boot_ci_dep_delay)"
+"1","BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+"
+"1","Based on 1000 bootstrap replicates
+
+"
+"1","CALL : 
+"
+"1","boot.ci(boot.out = boot_results, type = ""norm"", index = 2)
+"
+"1","
+Intervals : "
+"1","
+Level"
+"1"," "
+"1","     Normal        "
+"1","
+95%  "
+"1"," "
+"1","( 0.7565,"
+"1"," "
+"1"," 1.2201 )  "
+"1","
+Calculations and Intervals on Original Scale
+"
+"0","# Repeat this for other coefficients by changing the index if desired"
+"0",""

@@ -1,0 +1,5 @@
+"0","```r
+sum( (observed - expected)^2 / expected )
+```"
+"1","[1] 8.44
+"

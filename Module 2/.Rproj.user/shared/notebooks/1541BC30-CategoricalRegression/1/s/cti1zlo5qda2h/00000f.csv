@@ -1,0 +1,3 @@
+"0","sense_preds <- tibble(DominantModality = sort(unique(senses$DominantModality))) "
+"0","sense_preds$fit <- predict(sense_all, sense_preds)"
+"0","sense_preds"

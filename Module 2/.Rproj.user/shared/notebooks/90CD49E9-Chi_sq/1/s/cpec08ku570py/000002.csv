@@ -1,0 +1,8 @@
+"0","```r
+load( file.path( \"chapek9.Rdata\" ))
+str(chapek9)
+```"
+"1","'data.frame':	180 obs. of  2 variables:
+ $ species: Factor w/ 2 levels \"robot\",\"human\": 1 2 2 2 1 2 2 1 2 1 ...
+ $ choice : Factor w/ 3 levels \"puppy\",\"flower\",..: 2 3 3 3 3 2 3 3 1 2 ...
+"

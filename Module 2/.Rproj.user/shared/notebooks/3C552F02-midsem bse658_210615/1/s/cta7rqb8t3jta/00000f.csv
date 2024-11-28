@@ -1,0 +1,5 @@
+"0","mean <- 10"
+"0","sd <- 5"
+"0","sample_size <- 10"
+"0","samples <- rnorm(sample_size, mean = mean, sd = sd)"
+"0",""

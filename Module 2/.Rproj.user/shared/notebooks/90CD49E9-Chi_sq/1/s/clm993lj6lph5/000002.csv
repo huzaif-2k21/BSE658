@@ -1,0 +1,7 @@
+"0","```r
+(observed - expected)^2
+```"
+"1","
+   clubs diamonds   hearts   spades 
+     225        1      196        0 
+"

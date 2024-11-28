@@ -1,0 +1,6 @@
+"0","# Load the HairEyeColor dataset"
+"0","data(""HairEyeColor"")"
+"0",""
+"0","# Aggregate total counts by eye color"
+"0","eye_total <- aggregate(Freq ~ Eye, data = as.data.frame(HairEyeColor), sum)"
+"0","eye_total"

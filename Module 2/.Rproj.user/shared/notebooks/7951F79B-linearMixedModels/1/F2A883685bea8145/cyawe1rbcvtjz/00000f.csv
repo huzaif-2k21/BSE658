@@ -1,0 +1,2 @@
+"0","boxplot(frequency ~ attitude*gender,"
+"0","col=c(""white"",""lightgray""),data)"

@@ -1,0 +1,6 @@
+"0","setwd(""C:/Users/hp/Documents/GitHub/BSE658/Module 5/"") # set curretn path as workpath"
+"2","Warning:"
+"2"," The working directory was changed to C:/Users/hp/Documents/GitHub/BSE658/Module 5 inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks.
+"
+"0","#install.packages('psych')"
+"0","#install.packages('lsr')"

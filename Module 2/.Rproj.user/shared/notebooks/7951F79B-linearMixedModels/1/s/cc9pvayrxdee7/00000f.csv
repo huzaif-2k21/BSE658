@@ -1,0 +1,2 @@
+"0","data = read.csv(""http://www.bodowinter.com/tutorial/politeness_data.csv"")"
+"0","head(data)"

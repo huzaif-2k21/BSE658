@@ -78,6 +78,7 @@ pants <- data.frame(
    probability = c(0.5,0.3,0.1,0,0.1))
 
 pants
+barplot(height = pants$probability,names.arg = pants$type)
 ```
 Probability distribution is simply the probabilities of these different events above. Each of the events has a probability that lies between 0 and 1, and if we add up the probability of all events, they sum to 1.
 

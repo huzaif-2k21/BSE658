@@ -1,0 +1,6 @@
+"0","yhat.2 <- fitted.values( object = regression.2 )"
+"0"," plot( x = yhat.2, "
+"0","       y = parenthood$dan.grump,"
+"0","       xlab = ""Fitted Values"","
+"0","       ylab = ""Observed Values"" "
+"0"," )"

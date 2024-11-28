@@ -1,0 +1,2 @@
+"0","M0 <- lm( dan.grump ~ dan.sleep + day, parenthood )"
+"0","M1 <- lm( dan.grump ~ dan.sleep + day + baby.sleep, parenthood )"

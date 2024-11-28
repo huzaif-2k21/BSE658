@@ -1,0 +1,3 @@
+"0","chem <- mutate(chem,"
+"0","DominantModality = factor(DominantModality),"
+"0","ModRe = relevel(DominantModality, ref = 'Taste'))"

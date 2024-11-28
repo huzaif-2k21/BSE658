@@ -1,0 +1,6 @@
+"0","df <- 10"
+"0",""
+"0","chi_sq_samples <- rchisq(1000, df)"
+"0",""
+"0",""
+"0","hist(chi_sq_samples, main = ""Chi-Square Distribution (DOF = 10)"", xlab = ""Chi-Square Value"")"

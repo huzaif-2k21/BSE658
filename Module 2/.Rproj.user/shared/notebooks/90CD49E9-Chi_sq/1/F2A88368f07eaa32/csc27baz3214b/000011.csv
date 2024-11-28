@@ -1,0 +1,4 @@
+"0","library(chisq.posthoc.test)"
+"2","Error in library(chisq.posthoc.test) : 
+  there is no package called ‘chisq.posthoc.test’
+"

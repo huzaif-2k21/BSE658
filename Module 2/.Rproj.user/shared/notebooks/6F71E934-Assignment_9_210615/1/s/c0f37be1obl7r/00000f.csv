@@ -1,0 +1,3 @@
+"0","orthodont_data %>%"
+"0","  group_by(age) %>%"
+"0","  summarize(mean_distance = mean(distance), sd_distance = sd(distance))"

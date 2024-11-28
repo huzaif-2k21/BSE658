@@ -1,0 +1,8 @@
+"0","```r
+N <- 200  # sample size
+expected <- N * probabilities # expected frequencies
+expected
+```"
+"1","   clubs diamonds   hearts   spades 
+      50       50       50       50 
+"

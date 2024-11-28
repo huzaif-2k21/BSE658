@@ -1,0 +1,6 @@
+"0","yhat.2 <- fitted.values( object = lm_full)"
+"0"," plot( x = yhat.2, "
+"0","       y = airquality$Ozone,"
+"0","       xlab = ""Fitted Values"","
+"0","       ylab = ""Observed Values"" "
+"0"," )"

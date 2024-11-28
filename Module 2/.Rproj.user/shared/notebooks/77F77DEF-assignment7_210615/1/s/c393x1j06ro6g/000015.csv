@@ -1,0 +1,4 @@
+"0","# Compare models with and without 'cyl' using AIC and ANOVA"
+"0","M0 <- lm(mpg ~ hp + wt, cleaned_data)"
+"0","M1 <- lm(mpg ~ hp + wt + cyl, cleaned_data)"
+"0","AIC(M0, M1)"

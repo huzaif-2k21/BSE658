@@ -1,0 +1,4 @@
+"0","```r
+load( \"./chico.Rdata\" )
+head(chico)
+```"

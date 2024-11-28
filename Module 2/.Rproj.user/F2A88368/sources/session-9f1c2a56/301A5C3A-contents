@@ -1,0 +1,238 @@
+---
+title: "Regression"
+output: html_document
+date: "2022-11-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) # set current path as work path
+```
+
+
+
+```{r}
+setwd("C:/Users/hp/Documents/GitHub/BSE658/module 6/")
+load( file.path("parenthood.Rdata" ))
+colnames(parenthood) <- c('dan.sleep','baby.sleep','dan.grump','day')
+```
+
+
+```{r}
+head(parenthood)
+```
+
+## Simple linear regression:
+dan.grump ~ dan.sleep (Is Dan's sleep deprivation leading to grumpiness the next day?)
+```{r}
+regression.1 <- lm( formula = dan.grump ~ dan.sleep,  
+                    data = parenthood )
+print( regression.1 )
+```
+
+```{r}
+summary(regression.1)
+```
+
+```{r}
+cor.test( x = parenthood$dan.sleep, y = parenthood$dan.grump )
+```
+
+
+## Multiple linear regression
+dan.grump ~ dan.sleep + baby.sleep (Is Dan's sleep and the baby's sleep both together leading to grumpiness the next day?)
+```{r}
+va <- 0.9033^2
+va
+```
+
+```{r}
+regression.2 <- lm( formula = dan.grump ~ dan.sleep + baby.sleep,  
+                     data = parenthood )
+print( regression.2 )
+```
+```{r}
+summary(regression.2)
+```
+
+#homes test check for alpha inflation
+```{r}
+library(lsr)
+correlate(parenthood, test=TRUE)
+```
+
+#done for indepenadant variable
+```{r}
+confint( object = regression.2,
+        level = .99)
+```
+
+#standardization of co efficients(slpoe and intercept) and strip of the units by standardizing them.
+```{r}
+standardCoefs( regression.2 )
+
+```
+
+## Checking Model Assumptions
+First, we need to generate the residuals!
+
+```{r}
+residuals( object = regression.2 )
+```
+
+```{r}
+rstandard( model = regression.2 )
+```
+
+```{r}
+rstudent( model = regression.2 )
+```
+
+```{r}
+hatvalues( model = regression.2 )
+```
+# how much away from mean, check if a poinnt is an outlier and influence by removing and checking how the co efficient change (if it is > 1 then it is harmful to keep it)
+
+```{r}
+ckd <- cooks.distance( model = regression.2 )
+ckd
+```
+
+
+
+Directly plotting Cook's distance using plot from car package
+```{r}
+plot(regression.2,which=4)
+```
+
+
+
+
+```{r}
+lm( formula = dan.grump ~ dan.sleep + baby.sleep,  # same formula
+     data = parenthood,       # same data frame...
+     subset = -64             # ...but observation 64 is deleted
+ )
+```
+
+
+
+
+```{r}
+ hist( x = residuals( regression.2 ),   # data are the residuals
+       xlab = "Value of residual",      # x-axis label
+       main = "",                       # no title 
+       breaks = 20                      # lots of breaks
+ )
+```
+
+
+Directly make the QQ plot of residuals
+
+```{r}
+plot( x = regression.2, which = 2 )
+```
+Null hypothesis - residuals are normal so by high p value it is normally distributed
+```{r}
+shapiro.test(residuals(regression.2))
+```
+
+Checking linearity of relationship
+```{r}
+yhat.2 <- fitted.values( object = regression.2 )
+ plot( x = yhat.2, 
+       y = parenthood$dan.grump,
+       xlab = "Fitted Values",
+       ylab = "Observed Values" 
+ )
+```
+
+
+Checking this using residuals -- using plot
+```{r}
+plot(x = regression.2, which = 1)
+
+```
+
+
+```{r}
+residualPlots( model = regression.2 ) 
+```
+
+If the curvature is significant, then you might want to transform the predictor using Box Cox Transformation. Or use the powerTransform() in the car package.
+
+
+Checking homogeneity of variance
+```{r}
+plot(x = regression.2, which = 3)
+
+```
+null hypothesis : it is okay (high p value means null is accepted)
+```{r}
+ncvTest( regression.2 )
+
+```
+
+Lastly, we assess the variance inflation factor -- to diagnose for collinearity
+
+```{r}
+vif( mod = regression.2 )
+```
+
+
+
+
+Backward elimination
+
+```{r}
+full.model <- lm( formula = dan.grump ~ dan.sleep + baby.sleep + day,  
+                   data = parenthood  
+ )
+```
+
+```{r}
+ step( object = full.model,     # start at the full model
+       direction = "backward"   # allow it remove predictors but not add them
+ )
+```
+Forward selection
+nul model does not have varibale of interest and full model will have all participants of class.
+```{r}
+ null.model <- lm( dan.grump ~ 1, parenthood )   # intercept only.
+ step( object = null.model,     # start with null.model
+       direction = "forward",   # only consider "addition" moves
+       scope =  dan.grump ~ dan.sleep + baby.sleep + day  # largest model allowed
+ )
+```
+ Comparing two regression models
+```{r}
+M0 <- lm( dan.grump ~ dan.sleep + day, parenthood )
+M1 <- lm( dan.grump ~ dan.sleep + day + baby.sleep, parenthood )
+```
+
+```{r}
+AIC( M0, M1 )
+```
+
+```{r}
+anova( M0, M1 )
+```
+
+
+Using the performance package from easystats for model checking
+
+```{r}
+library(easystats)
+```
+
+```{r}
+model_performance(M1)
+```
+
+
+```{r}
+# checking model assumptions
+check_model(M1)
+```
+
+

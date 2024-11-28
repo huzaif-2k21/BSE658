@@ -1,0 +1,4 @@
+"0","```r
+mydiet <- filter(newdata,Diet == 3)
+sample <- mydiet$weightdiff
+```"

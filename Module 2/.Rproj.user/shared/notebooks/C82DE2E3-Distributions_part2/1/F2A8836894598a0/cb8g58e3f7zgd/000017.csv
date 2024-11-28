@@ -1,0 +1,2 @@
+"0","# Mean 1, sd 0.5"
+"0","lines(x, dnorm(x, mean = 1, sd = 0.5), col = ""blue"", lty = 1, lwd = 2)"

@@ -1,0 +1,169 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+---
+title: ""
+output: html_notebook
+---
+
+
+
+Install lsr, psych library if not already installed
+```{r}
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 5/") # set curretn path as workpath
+#install.packages('psych')
+#install.packages('lsr')
+```
+
+```{r}
+library(lsr)
+library(tibble)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 5/")
+load( file.path("zeppo.Rdata" )) 
+View(zeppo)
+abc <- load("zeppo.Rdata")
+oneSampleTTest( x=grades, mu=67.5 ) #add the mu value here
+data()
+
+```
+```{r}
+data("ToothGrowth")
+View(ToothGrowth)
+?ToothGrowth
+```
+
+```{r}
+install.packages('MKinfer')
+```
+
+```{r}
+library(MKinfer)
+```
+
+
+```{r}
+boot.t.test( x=grades, mu=67.5 )
+```
+
+
+
+
+
+
+```{r}
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 5/")
+load (file.path("harpo.Rdata" ))
+str(harpo)
+```
+
+```{r}
+head( harpo )
+```
+
+
+```{r}
+independentSamplesTTest( 
+      formula = grade ~ tutor,  # formula specifying outcome and group variables
+      data = harpo,             # data frame that contains the variables
+      var.equal = TRUE          # assume that the two groups have the same variance
+  )
+```
+
+```{r}
+boot.t.test( 
+      formula = grade ~ tutor,  # formula specifying outcome and group variables
+      data = harpo            # data frame that contains the variables
+  )
+```
+
+
+
+```{r}
+library(car)
+```
+
+
+```{r}
+independentSamplesTTest( 
+      formula = grade ~ tutor,  # formula specifying outcome and group variables
+      data = harpo              # data frame that contains the variables
+  )
+```
+```{r}
+leveneTest(grade ~ tutor,  # formula specifying outcome and group variables
+      data = harpo)              # data frame that contains the variables)
+```
+
+
+```{r}
+setwd("C:/Users/hp/Documents/GitHub/BSE658/Module 5/")
+load( file.path("chico.Rdata" ))
+str(chico) 
+```
+
+
+```{r}
+head( chico )
+```
+
+
+```{r}
+library( psych )
+describe( chico )
+```
+
+
+
+```{r}
+chico$improvement <- chico$grade_test2 - chico$grade_test1 
+```
+
+
+```{r}
+head( chico )
+```
+```{r}
+oneSampleTTest( chico$improvement, mu=0 )
+```
+```{r}
+qqnorm( y = chico$improvement )        # draw the QQ plot
+```
+
+```{r}
+shapiro.test( x = chico$improvement )
+```
+
+```{r}
+improvement2 <- rchisq(100, 2) 
+hist(x = improvement2)
+```
+```{r}
+qqnorm( y = improvement2 ) 
+```
+```{r}
+shapiro.test( x = improvement2 )
+```
+
+
+```{r}
+wilcox.test( x = improvement2, mu=0)
+```
+

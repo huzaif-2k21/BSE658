@@ -1,0 +1,2 @@
+"0","chem %>% group_by(DominantModality) %>%"
+"0","summarize(M = mean(Val), SD = sd(Val))"

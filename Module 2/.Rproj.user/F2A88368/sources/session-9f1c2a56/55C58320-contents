@@ -1,0 +1,192 @@
+---
+title: "assignment9"
+output: pdf_document
+date: "2024-11-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# Install packages if they are not already installed
+if (!require("nlme")) install.packages("nlme")
+if (!require("lme4")) install.packages("lme4")
+if (!require("easystats")) install.packages("easystats")
+if (!require("dplyr")) install.packages("dplyr")
+if (!require("sjPlot")) install.packages("sjPlot")
+
+# Load packages
+library(nlme)
+library(lme4)
+library(easystats)
+library(dplyr)
+library(sjPlot)
+library(tidyverse)
+library(broom)
+library(car)
+
+# Load the Orthodont dataset
+data("Orthodont", package = "nlme")
+
+```
+distance: The distance (in millimeters) between the pituitary and pterygomaxillary fissure in the skull.The age is the age of children and sex is gender here.
+```{r}
+head(Orthodont)
+
+summary(Orthodont)
+
+```
+Doing different type of visualization to get idea of how does the data looks to decide the fixed and random effect for variables.  
+```{r}
+library(ggplot2)
+orthodont1 <- Orthodont %>% 
+  mutate(Sex = as.factor(Sex),age=as.factor(age),
+         Subject = as.factor(Subject))
+boxplot(distance ~ age*Sex,
+col=c("white","lightgray"),orthodont1)
+orthodont1 %>% ggplot(aes(x= distance, y=Sex)) +
+                geom_boxplot()
+orthodont1 %>% ggplot(aes(x= distance, y=age)) +
+                geom_boxplot()
+orthodont1 %>% ggplot(aes(x= distance, y=Sex)) +
+                geom_boxplot() + facet_grid(.~Subject) +coord_flip()
+```
+```{r}
+orthodont_null_model <- lmer(distance ~ 1 + (1 | Subject), data = orthodont1)
+summary(orthodont_null_model)
+```
+```{r}
+orthodont_model1 <- lmer(distance ~ Sex + (1 | Subject), data = orthodont1)
+
+# Display the summary of the model
+summary(orthodont_model1)
+```
+```{r}
+orthodont_model2 <- lmer(distance ~ Sex +age + (1 | Subject), data = orthodont1)
+
+# Display the summary of the model
+summary(orthodont_model2)
+```
+```{r}
+AIC(orthodont_null_model,orthodont_model1,orthodont_model2)
+```
+```{r}
+orthodont_null_model_1 <- lmer(distance ~ 1 + (1 | Subject), data = orthodont1, REML = FALSE)
+orthodont_model1_1 <- lmer(distance ~ Sex + (1 | Subject), data = orthodont1, REML = FALSE)
+orthodont_model2_1 <- lmer(distance ~ Sex +age + (1 | Subject), data = orthodont1, REML = FALSE)
+anova(orthodont_null_model_1, orthodont_model1_1, orthodont_model2_1)
+```
+Random Slope :
+```{r}
+orthodont_model3 = lmer(distance~Sex + age + (1+Sex|Subject) , data = orthodont1, REML=FALSE)
+summary(orthodont_model3)
+```
+```{r}
+anova( orthodont_model1_1, orthodont_model2_1,orthodont_model3)
+```
+Interpretation: The high p-value of 0.9017 indicates we fail to reject the null hypothesis that the random slope of Sex is significantly contributing to explaining the variability in distance. In simpler terms, allowing the effect of Sex to vary across Subjects doesn’t add meaningful explanatory power to the model.
+
+```{r}
+AIC( orthodont_model1_1, orthodont_model2_1,orthodont_model3)
+```
+Conclusion: AIC are both lowest in orthodont_model2_1, indicating it’s the best-fitting model among the three.
+The best model is orthodont_model2_1 (with Sex and age as fixed effects and a random intercept for Subject), as it balances fit and simplicity.
+```{r}
+check_normality(orthodont_model2_1)
+```
+The residuals does not seem to follow normality . This can be solved by bootstrapping 
+```{r}
+check_heteroscedasticity(orthodont_model2_1)
+```
+```{r}
+check_collinearity(orthodont_model2_1)
+```
+```{r}
+check_model(orthodont_model2_1)
+```
+Categorical Regression: 
+Took Age as categorical variable and Distance as depenadant variable to perform analysis: 
+```{r}
+orthodont_data <- Orthodont
+```
+
+```{r}
+orthodont_data <- orthodont_data %>%
+  mutate(age = factor(age))
+```
+
+```{r}
+orthodont_data %>%
+  group_by(age) %>%
+  summarize(mean_distance = mean(distance), sd_distance = sd(distance))
+
+```
+```{r}
+orthodont_data %>%
+  ggplot(aes(x = age, y = distance, fill = age)) +
+  geom_boxplot() + 
+  theme_minimal() +
+  scale_fill_brewer(palette = 'Set3') +
+  labs(title = "Boxplot of Distance by Age", x = "Age (Categorical)", y = "Distance")
+```
+```{r}
+distance_model_age <- lm(distance ~ age, data = orthodont_data)
+summary(distance_model_age)
+
+```
+The intercept represents the mean distance for the youngest age group (based on alphabetical or numeric order of levels).
+Each coefficient shows how much the mean distance changes for each age group relative to the youngest age group. We observe the P-value of age 10 is not significant indicating there is not a really much change from age 8 to 10. 
+```{r}
+age_preds <- tibble(age = unique(orthodont_data$age))
+age_preds$fit <- predict(distance_model_age, age_preds)
+age_preds
+
+```
+
+```{r}
+orthodont_data1 <- orthodont_data %>%
+  mutate(age = factor(age),
+         age_releveled = relevel(age, ref = '14'))  # Set age 10 as the reference
+
+# Verify levels for age and age_releveled
+levels(orthodont_data1$age)
+levels(orthodont_data1$age_releveled)
+
+# Run the linear model with re-leveled age as the predictor
+distance_model_age_releveled <- lm(distance ~ age_releveled, data = orthodont_data1)
+summary(distance_model_age_releveled)
+```
+On changing the refernce value we observe a unique result that the P-value for all other categories are consistant and significant showing the relative difference between 14 and 12 is more as compared to 8 and 10.
+```{r}
+shapiro.test(residuals(distance_model_age))
+hist(residuals(distance_model_age), main = "Histogram of Residuals", xlab = "Residuals")
+plot(distance_model_age, which = 2)
+ncvTest(distance_model_age)
+```
+The residulas seems to be normally distrubuted as seen in Shapiro Test and ncv test is also okay. 
+```{r}
+residualPlots( model = distance_model_age) 
+```
+Model Interpretation: The results show that age has a significant impact on distance. Each age level's coefficient indicates the deviation in distance from the reference age level.
+Assumption Testing: The normality and homoscedasticity tests suggest that the model assumptions are largely met. Minor deviations may still be observed in linearity or homoscedasticity checks.
+Multicollinearity: The VIF values are within acceptable limits, confirming no multicollinearity issues for this model.

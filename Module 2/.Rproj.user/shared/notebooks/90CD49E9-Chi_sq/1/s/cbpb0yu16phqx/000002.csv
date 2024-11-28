@@ -1,0 +1,8 @@
+"0","```r
+observed <- table( cards$choice_1 )
+observed
+```"
+"1","
+   clubs diamonds   hearts   spades 
+      35       51       64       50 
+"

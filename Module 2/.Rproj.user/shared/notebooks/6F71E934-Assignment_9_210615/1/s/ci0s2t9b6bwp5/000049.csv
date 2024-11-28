@@ -1,0 +1,2 @@
+"0","orthodont1 %>% ggplot(aes(x= distance, y=Sex)) +"
+"0","                geom_boxplot()"

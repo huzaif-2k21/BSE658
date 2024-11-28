@@ -1,0 +1,2 @@
+"0","chem_preds$fit <- predict(chem_mdl, chem_preds)"
+"0","chem_preds"

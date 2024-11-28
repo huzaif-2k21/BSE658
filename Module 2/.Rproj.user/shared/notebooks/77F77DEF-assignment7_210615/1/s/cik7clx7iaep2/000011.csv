@@ -1,0 +1,2 @@
+"0","# Plot residuals to assess homogeneity of variance"
+"0","plot(multiple_reg_cleaned, which = 3)"

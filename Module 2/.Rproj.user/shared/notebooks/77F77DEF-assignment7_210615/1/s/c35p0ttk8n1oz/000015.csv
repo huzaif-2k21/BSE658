@@ -1,0 +1,3 @@
+"0","# Check linearity by plotting fitted values against observed values"
+"0","yhat <- fitted.values(multiple_reg_cleaned)"
+"0","plot(x = yhat, y = cleaned_data$mpg, xlab = ""Fitted Values"", ylab = ""Observed Values"")"

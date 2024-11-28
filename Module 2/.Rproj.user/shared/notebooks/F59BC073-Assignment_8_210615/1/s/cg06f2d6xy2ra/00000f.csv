@@ -1,0 +1,7 @@
+"0","# Sample approximately 25 rows of the original data"
+"0","limited_data <- flights_filtered %>% sample_n(25)"
+"0","nrow(limited_data)"
+"1","[1]"
+"1"," 25"
+"1","
+"

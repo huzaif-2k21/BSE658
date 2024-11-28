@@ -1,0 +1,7 @@
+"0","```r
+probabilities <- c(clubs = .25, diamonds = .25, hearts = .25, spades = .25) 
+probabilities
+```"
+"1","   clubs diamonds   hearts   spades 
+    0.25     0.25     0.25     0.25 
+"

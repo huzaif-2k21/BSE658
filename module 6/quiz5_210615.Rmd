@@ -1,0 +1,90 @@
+---
+title: "quiz5_210615"
+output: pdf_document
+date: "2024-11-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+data("airquality")  # Load the dataset
+airquality <- na.omit(airquality)  # Remove rows with NA values
+head(airquality)
+```
+
+```{r}
+lm_simple <- lm(Ozone ~ Temp, data = airquality)
+summary(lm_simple)
+```
+The p value is here is very less stating that we can reject the null hypothesis of temp not affecting the ozone and slope is positive inferring a positive correlation
+```{r}
+lm_null <- lm(Ozone ~ 1, data = airquality)  # Start with an empty model
+lm_full <- lm(Ozone ~ Temp + Solar.R + Wind + Month, data = airquality)  # Full model with all predictors
+forward_model <- step(lm_null, scope = list(lower = lm_null, upper = lm_full), direction = "forward")
+summary(forward_model)
+```
+the forward model selection method helped in sequentially selecting the varibales on theie AIC values . Variables like temp, wind, solar radiation had with great confidence value ( low p values <0.05 suggest it) but the the model also included month but it did have a signicifant p-value and thus not so confidence so it shows it might have a weaker effect. 
+
+```{r}
+backward_model <- step(lm_full, direction = "backward")
+summary(backward_model)
+```
+The backward selction also showed similar result as forward model but with increase oreder for selction oF AIC score . The R-squared value is 0.6199, indicating that approximately 61.99% of the variance in Ozone levels is explained by this model. The F-statistic in both also has significant p-value showing it has strong model for prediction. 
+
+```{r}
+plot(x=lm_full, which = 2)  # QQ plot for residuals
+shapiro.test(residuals(lm_full))  # Shapiro-Wilk test for normality
+```
+The test fails normaility
+```{r}
+residuals( object = lm_full )
+```
+```{r}
+#checking for the outliers using cooks distance
+cks <- cooks.distance( model = lm_full)
+cks
+```
+```{r}
+plot(lm_full,which=4)
+```
+```{r}
+hist( x = residuals(lm_full),   # data are the residuals
+       xlab = "Value of residual",      # x-axis label
+       main = "",                       # no title 
+       breaks = 20                      # lots of breaks
+ )
+```
+```{r}
+yhat.2 <- fitted.values( object = lm_full)
+ plot( x = yhat.2, 
+       y = airquality$Ozone,
+       xlab = "Fitted Values",
+       ylab = "Observed Values" 
+ )
+```
+```{r}
+
+```
+

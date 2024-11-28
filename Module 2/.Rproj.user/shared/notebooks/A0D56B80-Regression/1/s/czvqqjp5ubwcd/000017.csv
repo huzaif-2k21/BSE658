@@ -1,0 +1,6 @@
+"0","setwd(""C:/Users/hp/Documents/GitHub/BSE658/module 6/"")"
+"2","Warning:"
+"2"," The working directory was changed to C:/Users/hp/Documents/GitHub/BSE658/module 6 inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks.
+"
+"0","load( file.path(""parenthood.Rdata"" ))"
+"0","colnames(parenthood) <- c('dan.sleep','baby.sleep','dan.grump','day')"

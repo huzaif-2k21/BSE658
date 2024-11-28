@@ -1,0 +1,6 @@
+"0","```r
+sample2 <- select(newdata, Diet,weightdiff) 
+sample2 <- filter(sample2, Diet==1 | Diet==2)
+sample2 <- as.data.frame(sample2) #the lsr function for independent t-test takes dataframes
+sample2
+```"

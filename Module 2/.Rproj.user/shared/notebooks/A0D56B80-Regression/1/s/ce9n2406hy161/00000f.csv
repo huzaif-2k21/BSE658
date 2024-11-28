@@ -1,0 +1,3 @@
+"0","full.model <- lm( formula = dan.grump ~ dan.sleep + baby.sleep + day,  "
+"0","                   data = parenthood  "
+"0"," )"

@@ -1,0 +1,8 @@
+"0","# Load the built-in sleep dataset"
+"0","data(""sleep"")"
+"0",""
+"0","# Step 1: Display the original dataset"
+"0","cat(""Sleep Dataset:\n"")"
+"1","Sleep Dataset:
+"
+"0","print(head(sleep))"

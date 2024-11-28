@@ -1,0 +1,34 @@
+"0","```r
+independentSamplesTTest( 
+      formula = weightdiff ~ Diet,  # formula specifying outcome and group variables
+      data = sample2,               # data frame that contains the variables
+      var.equal = TRUE              # assume that the two groups have the same variance
+  )
+```"
+"1","Warning in independentSamplesTTest(formula = weightdiff ~ Diet, data = sample2,  :
+  group variable is not a factor
+"
+"1","
+   Student's independent samples t-test 
+
+Outcome variable:   weightdiff 
+Grouping variable:  Diet 
+
+Descriptive statistics: 
+                1     2
+   mean     3.300 3.026
+   std dev. 2.240 2.523
+
+Hypotheses: 
+   null:        population means equal for both groups
+   alternative: different population means in each group
+
+Test results: 
+   t-statistic:  0.408 
+   degrees of freedom:  49 
+   p-value:  0.685 
+
+Other information: 
+   two-sided 95% confidence interval:  [-1.076, 1.624] 
+   estimated effect size (Cohen's d):  0.114 
+"

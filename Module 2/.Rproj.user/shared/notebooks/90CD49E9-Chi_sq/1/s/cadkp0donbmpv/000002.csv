@@ -1,0 +1,8 @@
+"0","```r
+summary(chapek9)
+```"
+"1","  species      choice   
+ robot:87   puppy : 28  
+ human:93   flower: 43  
+            data  :109  
+"

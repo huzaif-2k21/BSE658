@@ -1,0 +1,19 @@
+"0","```r
+data <- read_csv('./Diet_R.csv')
+```"
+"1","
+-- Column specification -----------------------------------------------------------------------------------------
+cols(
+  Person = col_double(),
+  gender = col_double(),
+  Age = col_double(),
+  Height = col_double(),
+  pre.weight = col_double(),
+  Diet = col_double(),
+  weight6weeks = col_double()
+)
+"
+"0","```r
+newdata <- mutate(data, weightdiff = pre.weight-weight6weeks)
+newdata
+```"

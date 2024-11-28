@@ -1,0 +1,3 @@
+"0","age_preds <- tibble(age = unique(orthodont_data$age))"
+"0","age_preds$fit <- predict(distance_model_age, age_preds)"
+"0","age_preds"

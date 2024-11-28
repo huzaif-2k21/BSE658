@@ -1,0 +1,169 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+Regression with categorical predictors: 
+Basically, using regression for a t-test!  
+
+Reference: Bodo Winter Chapter 7
+
+
+```{r}
+library(tidyverse)
+library(broom)
+```
+
+```{r}
+senses <- read_csv('winter_2016_senses_valence.csv')
+senses
+```
+Preprocessing and visualization to get only the Taste and Smell data getting rows
+
+```{r}
+chem <- filter(senses, DominantModality %in% c('Taste', 'Smell'))
+table(chem$DominantModality)
+```
+
+
+```{r}
+chem %>% group_by(DominantModality) %>%
+summarize(M = mean(Val), SD = sd(Val))
+```
+smell is the reference (based on alphabetical order)
+```{r}
+chem %>% ggplot(aes(x = DominantModality, y = Val, fill = DominantModality)) +
+geom_boxplot() + theme_minimal() +
+scale_fill_brewer(palette = 'Accent')
+```
+If you are interested in choosing the right colors for your plots, then here's a good resource
+https://ggplot2-book.org/scales-colour
+
+smell is the reference
+coding of variable 
+referred to as treatment coding or dummy
+smell - 0 taste - 1
+intercept as mean of smell 
+
+reference is smell and it tells how much it shows in when it changes from smell to taste
+categorical variables  for smell and taste cahange with valence 
+```{r}
+chem_mdl <- lm(Val ~ DominantModality, data = chem)
+summary(chem_mdl)
+```
+
+
+Using the predict() to determine the values associated with each predictor
+
+```{r}
+chem_preds <- tibble(DominantModality = unique(chem$DominantModality))
+chem_preds
+chem_preds$fit <- predict(chem_mdl, chem_preds)
+chem_preds
+```
+0---> 1
+Change the reference - from Smell to Taste.
+factor changes character to numeral gives 0,1 etc to groups 
+
+```{r}
+chem <- mutate(chem,
+DominantModality = factor(DominantModality),
+ModRe = relevel(DominantModality, ref = 'Taste'))
+```
+
+Verify reference levels
+```{r}
+levels(chem$DominantModality)
+levels(chem$ModRe)
+```
+
+Rerun the regression
+```{r}
+lm(Val ~ ModRe, data = chem)
+```
+
+
+Treatment Coding vs Sum Coding:
+
+Treatment Coding:
+Taste = 0; Smell = 1
+
+Sum Coding: 
+Taste = -1; Smell = 1
+
+Sum Coding is useful esepcially for interpreting interactions.
+
+___________________________________________________________________
+
+
+Fitting categorical data with more than two levels
+
+```{r}
+unique(senses$DominantModality)
+```
+
+
+Uses the entire varibales sight is the default here (the intercept) beacuse of alhabetical order
+
+```{r}
+sense_all <- lm(Val ~ DominantModality, data = senses)
+summary(sense_all)
+```
+
+
+Using predict to help with interpretation
+```{r}
+sense_preds <- tibble(DominantModality = sort(unique(senses$DominantModality))) 
+sense_preds$fit <- predict(sense_all, sense_preds)
+sense_preds 
+```
+
+ 
+Lastly, check assumptions: 
+
+Normality test: 
+
+```{r}
+library(car)
+```
+
+```{r}
+shapiro.test(residuals(sense_all))
+```
+```{r}
+ hist( x = residuals( sense_all ))
+
+```
+```{r}
+plot( x = sense_all, which = 2 )
+```
+
+```{r}
+ncvTest( sense_all )
+
+```
+Linearity test
+
+```{r}
+library(carData)
+```
+
+```{r}
+residualPlots( model = sense_all ) 
+```
+Lastly, we assess the variance inflation factor -- to diagnose for collinearity
+
+```{r}
+car::vif( mod = sense_all )
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

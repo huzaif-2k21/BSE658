@@ -1,0 +1,11 @@
+"0","library( psych )"
+"2","
+Attaching package: ‘psych’
+
+"
+"2","The following object is masked from ‘package:car’:
+
+    logit
+
+"
+"0","describe( chico )"

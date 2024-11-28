@@ -1,0 +1,8 @@
+"0","ggplot(sleep2, aes(x = days_deprived, y = Reaction)) +"
+"0","  geom_line(data = newdata2,"
+"0","            color = '#f4cae2', size = 1.5) +"
+"0","  geom_point() + theme_bw() +"
+"0","  scale_x_continuous(breaks = 0:7) +"
+"0","  facet_wrap(~Subject, nrow = 3) +"
+"0","  labs(y = ""Reaction Time"", "
+"0","       x = ""Days deprived of sleep (0 = baseline)"")"

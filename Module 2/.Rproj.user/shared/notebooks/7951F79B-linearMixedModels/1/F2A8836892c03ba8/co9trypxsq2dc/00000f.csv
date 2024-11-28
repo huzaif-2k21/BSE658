@@ -1,0 +1,9 @@
+"0","library(easystats)"
+"2","[34m# Attaching packages: easystats 0.7.3[39m
+[32m✔ [39m[30mbayestestR [39m [32m0.15.0[39m   [32m✔ [39m[30mcorrelation[39m [32m0.8.6 [39m
+[32m✔ [39m[30mdatawizard [39m [32m0.13.0[39m   [32m✔ [39m[30meffectsize [39m [32m0.8.9 [39m
+[32m✔ [39m[30minsight    [39m [32m0.20.5[39m   [32m✔ [39m[30mmodelbased [39m [32m0.8.9 [39m
+[32m✔ [39m[30mperformance[39m [32m0.12.4[39m   [32m✔ [39m[30mparameters [39m [32m0.23.0[39m
+[32m✔ [39m[30mreport     [39m [32m0.5.9 [39m   [32m✔ [39m[30msee        [39m [32m0.9.0 [39m
+
+"

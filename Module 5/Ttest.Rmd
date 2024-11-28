@@ -55,7 +55,8 @@ independentSamplesTTest(
 load( file.path("chico.Rdata" ))
 str(chico) 
 ```
-
+ paired sampke t test is used as sample samples have been sampled and it is not independant
+the difference can be taken and it can be converted to one sample test assuming population mean to be zero.(assuming null hypothesis of that there is no improvement)
 
 ```{r}
 head( chico )

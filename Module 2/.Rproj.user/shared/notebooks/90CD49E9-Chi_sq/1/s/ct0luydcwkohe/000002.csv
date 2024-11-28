@@ -1,0 +1,24 @@
+"0","```r
+goodnessOfFitTest( x = cards$choice_1, p = nullProbs )
+```"
+"1","
+     Chi-square test against specified probabilities
+
+Data variable:   cards$choice_1 
+
+Hypotheses: 
+   null:        true probabilities are as specified
+   alternative: true probabilities differ from those specified
+
+Descriptives: 
+         observed freq. expected freq. specified prob.
+clubs                35             40             0.2
+diamonds             51             60             0.3
+hearts               64             60             0.3
+spades               50             40             0.2
+
+Test results: 
+   X-squared statistic:  4.742 
+   degrees of freedom:  3 
+   p-value:  0.192 
+"

@@ -96,4 +96,8 @@ associationTest( formula = ~choice+species, data = chapek9 )
 ```{r}
 cramersV( chapekFrequencies )
 ```
+```{r}
+library(chisq.posthoc.test)
+chisq.posthoc.test(chapekFrequencies)
+```
 

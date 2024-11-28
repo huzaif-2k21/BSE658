@@ -1,0 +1,22 @@
+"0","lm(Val ~ ModRe, data = chem)"
+"1","
+Call:
+"
+"1",""
+"1","lm(formula = Val ~ ModRe, data = chem)"
+"1",""
+"1","
+
+"
+"1","Coefficients:
+"
+"1","(Intercept)  "
+"1"," ModReSmell  "
+"1","
+"
+"1","     5.8081  "
+"1","    -0.3371  "
+"1","
+"
+"1","
+"

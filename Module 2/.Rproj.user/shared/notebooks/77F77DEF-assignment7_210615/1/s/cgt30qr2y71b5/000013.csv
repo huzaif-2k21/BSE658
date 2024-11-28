@@ -1,0 +1,2 @@
+"0","# Plot residuals histogram and QQ plot to check normality"
+"0","hist(residuals(multiple_reg), xlab = ""Residuals"", main = """", breaks = 10)"

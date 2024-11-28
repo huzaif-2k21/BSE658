@@ -1,0 +1,11 @@
+"0","# Load necessary library"
+"0","library(lsr)"
+"0",""
+"0","# Load the built-in PlantGrowth dataset"
+"0","data(""PlantGrowth"")"
+"0",""
+"0","# Step 1: Display the original dataset"
+"0","cat(""Original PlantGrowth Dataset:\n"")"
+"1","Original PlantGrowth Dataset:
+"
+"0","print(head(PlantGrowth))"

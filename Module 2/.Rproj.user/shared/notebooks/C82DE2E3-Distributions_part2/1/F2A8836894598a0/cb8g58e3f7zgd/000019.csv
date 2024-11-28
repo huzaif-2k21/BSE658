@@ -1,0 +1,5 @@
+"0",""
+"0","# Adding a legend"
+"0","legend(""topright"", legend = c(""1 1"", ""1 0.5""), col = c(""red"", ""blue""),"
+"0","       title = expression(paste(mu, "" "", sigma)),"
+"0","       title.adj = 0.75, lty = 1, lwd = 2, box.lty = 0)"

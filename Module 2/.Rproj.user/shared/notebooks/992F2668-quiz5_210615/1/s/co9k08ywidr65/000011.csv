@@ -1,0 +1,1 @@
+"0","plot(x=lm_full, which = 2)  # QQ plot for residuals"

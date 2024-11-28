@@ -1,0 +1,4 @@
+"0","```r
+chico$improvement <- chico$grade_test2 - chico$grade_test1 
+head(chico)
+```"

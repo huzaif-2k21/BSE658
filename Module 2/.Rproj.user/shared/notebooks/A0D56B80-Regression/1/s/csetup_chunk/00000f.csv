@@ -1,0 +1,2 @@
+"0","knitr::opts_chunk$set(echo = TRUE)"
+"0","setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) # set current path as work path"

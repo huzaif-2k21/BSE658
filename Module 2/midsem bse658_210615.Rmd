@@ -1,0 +1,179 @@
+---
+title: "MIDSEMESTER_BSE658_210615"
+output: pdf_document
+date: "2024-09-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(tibble)
+library(ggplot2)
+library(lsr)
+library(psych)
+```
+Simpson's Paradox can lead to misleading conclusions when data is analyzed without considering confounding variables. In a medical study, the new treatment appeared less effective overall than the standard treatment. However, when stratified by condition severity, the new treatment was found to be more effective in each subgroup. This highlights the importance of accounting for confounding variables and using stratified analysis to avoid incorrect conclusions.
+
+```{r}
+data("storms")
+head(storms)
+
+ggplot(data=storms, aes(x = lat, y = long, color = category)) +
+  geom_point() +
+  labs(title = "Loction of storms")
+
+ggplot(data=storms, aes(x = wind)) +
+  geom_histogram() +
+  labs(title = "Distribution of  wind speed")
+
+ggplot(storms, aes(x = wind, y = pressure)) +
+  geom_point() +
+  labs(title = "Relationship Between Wind Speed and Pressure")
+```
+Conclusions :
+The wind speed is decreasing with pressure
+The highest wind speed had the lowest count
+```{r}
+t_dist <- rnorm(10,10,5)
+t_dist
+ciMean(x=t_dist, conf =0.95)
+mean(ciMean(x=t_dist, conf =0.95))
+
+
+```
+
+
+
+```{r}
+mean <- 10
+sd <- 5
+sample_size <- 10
+samples <- rnorm(sample_size, mean = mean, sd = sd)
+
+```
+
+
+```{r}
+ci_cimeans <- ciMean(samples)
+t_value <- qt(0.975, df = sample_size - 1) 
+ci_tdist <- mean(samples) + c(-t_value, t_value) * sd(samples) / sqrt(sample_size)
+cat("CI using cimeans:", ci_cimeans, "\n")
+cat("CI using t-distribution:", ci_tdist, "\n")
+```
+
+A chi-square distribution is a probability distribution that describes the distribution of the sum of squared standard normal variables. It's often used in statistical hypothesis testing, particularly for goodness-of-fit tests and tests of independence. It is also used to as comparitive study for variances and distributions and independance.
+```{r}
+df <- 10
+
+chi_sq_samples <- rchisq(1000, df)
+
+
+hist(chi_sq_samples, main = "Chi-Square Distribution (DOF = 10)", xlab = "Chi-Square Value")
+
+
+normal_samples <- rnorm(1000, mean = 0, sd = 1)
+
+hist(normal_samples, main = "Standard Normal Distribution", xlab = "Standard Normal Value")
+```
+The distribution got more skewed towards the right in case of chi square distribution compared to normal distribution
+```{r}
+
+x <- 5
+sample_sizes <- c(10, 100, 1000)
+for (n in sample_sizes) {
+  samples <- rpois(n, x)
+  sd_sample <- sd(samples)
+  sem <- sd_sample / sqrt(n)
+  cat("Sample size:", n, "SEM:", sem, "\n")
+}
+```
+The standard error in mean is the error occured when we sample a population for a given number of times and calculate its mean and then plot a distribution out of it . The mean of that sample is the mean our sample mean. The variation or spread around it is the sample mean error . It is different from sample mean as the sample mean is the actual of randomly drawn out of sample, which may not even be close to true population mean. The population mean is the true mean that we get. When we increase the sample size the distribution of our mean becomes more and more like a normal distribution with mean equal to true population.
+We can clearly see that sample error is changing when the sample size is increasing showing the the graphs is getting towards more and more the true mean and lesser skewness.
+
+
+When to Use:
+
+The chi-square distribution is commonly used in:
+
+Goodness-of-Fit Tests: To assess how well observed data fits a theoretical distribution (e.g., comparing observed and expected frequencies in a contingency table).
+Tests of Independence: To determine if two categorical variables are independent (e.g., testing if there's a relationship between gender and voting preference).
+Hypothesis Testing: For various statistical tests, such as the chi-square test for variance and the chi-square test for independence.
+```{r}
+df <- 10
+
+chi_sq_samples <- rchisq(1000, df)
+
+
+hist(chi_sq_samples, main = "Chi-Square Distribution (DOF = 10)", xlab = "Chi-Square Value")
+
+
+normal_samples <- rnorm(1000, mean = 0, sd = 1)
+
+hist(normal_samples, main = "Standard Normal Distribution", xlab = "Standard Normal Value")
+```
+
+
+1. Define Hypothesis:
+Null Hypothesis (H1) The new drug is not more effective than the old drug in reducing cholesterol levels.
+Alternative Hypothesis (H2): The new drug is more effective than the old drug in reducing cholesterol levels.
+
+2. Collect Data:
+
+ Randomly assign participants to two groups: one receiving the new drug and the other receiving the old drug (or a placebo).
+Measure cholesterol levels before and after treatment for both groups.
+
+3. Analyze Data:
+
+Statistical Test: Choose a suitable statistical test, such as a paired t-test , based on the data distribution if it is normal or non normal.
+Calculate Test Statistic: Compute the test statistic using the collected data.
+1. Calculate the Confidence Interval:
+Determine the desired confidence level (e.g., 95%). Calculate the appropriate confidence interval using the sample data and the chosen statistical method (e.g., t-interval for means, z-interval for proportions).
+
+2. Interpret the Confidence Interval:
+   If the confidence interval does not include the null value (e.g., 0 for a difference in means), it suggests that the effect is statistically significant at the chosen confidence level. The wider the confidence interval, the greater the uncertainty about the true population parameter.
+
+ Comparing Cholesterol Levels
+
+Suppose we want to compare the mean cholesterol levels between two groups: those receiving the new drug and those receiving the old drug.
+
+1. Calculate Confidence Intervals:
+   Calculate 95% confidence intervals for the mean cholesterol levels in each group.
+
+2. Compare Confidence Intervals:
+   If the confidence intervals for the two groups do not overlap, it suggests that the difference between the means is statistically significant at a 95% confidence level.
+   If the confidence intervals overlap, it indicates that the difference between the means may not be statistically significant.
+
+7. Report Findings:
+Summarize Results: Present the  statistical analysis, and findings.
+Draw Conclusions: Based on the evidence, conclude whether the new drug is more effective than the old drug in reducing cholesterol levels..
+
+Ans 
+
+```{r}
+
+```
+

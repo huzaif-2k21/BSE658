@@ -1,0 +1,28 @@
+"0","lm( formula = dan.grump ~ dan.sleep + baby.sleep,  # same formula"
+"0","     data = parenthood,       # same data frame..."
+"0","     subset = -64             # ...but observation 64 is deleted"
+"0"," )"
+"1","
+Call:
+"
+"1",""
+"1","lm(formula = dan.grump ~ dan.sleep + baby.sleep, data = parenthood, 
+    subset = -64)"
+"1",""
+"1","
+
+"
+"1","Coefficients:
+"
+"1","(Intercept)  "
+"1","  dan.sleep  "
+"1"," baby.sleep  "
+"1","
+"
+"1","   126.3553  "
+"1","    -8.8283  "
+"1","    -0.1319  "
+"1","
+"
+"1","
+"

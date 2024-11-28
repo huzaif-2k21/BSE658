@@ -1,0 +1,15 @@
+"0","library(ggplot2)"
+"2","
+Attaching package: ‘ggplot2’
+
+"
+"2","The following object is masked _by_ ‘.GlobalEnv’:
+
+    diamonds
+
+"
+"0","orthodont1 <- Orthodont %>% "
+"0","  mutate(Sex = as.factor(Sex),age=as.factor(age),"
+"0","         Subject = as.factor(Subject))"
+"0","boxplot(distance ~ age*Sex,"
+"0","col=c(""white"",""lightgray""),orthodont1)"

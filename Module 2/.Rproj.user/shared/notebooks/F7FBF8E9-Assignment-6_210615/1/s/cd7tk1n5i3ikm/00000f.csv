@@ -1,0 +1,7 @@
+"0","library(chisq.posthoc.test)"
+"0","chisq.posthoc.test(cyl_gear_table)"
+"2","Warning in chisq.test(x, ...) :"
+"2","
+ "
+"2"," Chi-squared approximation may be incorrect
+"

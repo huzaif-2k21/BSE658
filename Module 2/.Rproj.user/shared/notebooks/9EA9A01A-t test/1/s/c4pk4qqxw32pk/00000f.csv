@@ -1,0 +1,2 @@
+"0","improvement2 <- rchisq(100, 2) "
+"0","hist(x = improvement2)"

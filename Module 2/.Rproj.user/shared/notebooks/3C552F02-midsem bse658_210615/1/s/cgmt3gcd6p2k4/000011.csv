@@ -1,0 +1,5 @@
+"0",""
+"0",""
+"0","normal_samples <- rnorm(1000, mean = 0, sd = 1)"
+"0",""
+"0","hist(normal_samples, main = ""Standard Normal Distribution"", xlab = ""Standard Normal Value"")"

@@ -1,0 +1,6 @@
+"0","orthodont_data %>%"
+"0","  ggplot(aes(x = age, y = distance, fill = age)) +"
+"0","  geom_boxplot() + "
+"0","  theme_minimal() +"
+"0","  scale_fill_brewer(palette = 'Set3') +"
+"0","  labs(title = ""Boxplot of Distance by Age"", x = ""Age (Categorical)"", y = ""Distance"")"

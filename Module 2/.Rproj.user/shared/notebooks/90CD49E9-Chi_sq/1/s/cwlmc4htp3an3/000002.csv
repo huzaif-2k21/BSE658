@@ -1,0 +1,7 @@
+"0","```r
+nullProbs <- c(clubs = .2, diamonds = .3, hearts = .3, spades = .2)
+nullProbs
+```"
+"1","   clubs diamonds   hearts   spades 
+     0.2      0.3      0.3      0.2 
+"

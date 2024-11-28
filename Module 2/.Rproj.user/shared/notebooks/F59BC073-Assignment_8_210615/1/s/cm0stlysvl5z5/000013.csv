@@ -1,0 +1,18 @@
+"0","# Define a function to extract coefficients from bootstrapped samples"
+"0","boot_fn <- function(data, indices) {"
+"0","  sample_data <- data[indices, ]"
+"0","  model <- lm(arr_delay ~ dep_delay + air_time + distance, data = sample_data)"
+"0","  return(coef(model))"
+"0","}"
+"0",""
+"0","# Perform bootstrapping with 1000 resamples"
+"0","set.seed(123)"
+"0","boot_results <- boot(data = limited_data, statistic = boot_fn, R = 1000)"
+"0","print(confint(boot_results, level = 0.95, type = ""norm""))"
+"1","Bootstrap"
+"1"," "
+"1","normal"
+"1"," "
+"1","confidence intervals
+
+"

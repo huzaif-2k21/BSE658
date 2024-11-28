@@ -1,0 +1,27 @@
+"0","```r
+library(lsr)
+oneSampleTTest( x=sample, true_mean )
+```"
+"1","
+   One sample t-test 
+
+Data variable:   sample 
+
+Descriptive statistics: 
+            sample
+   mean      5.148
+   std dev.  2.396
+
+Hypotheses: 
+   null:        population mean equals 3.844872 
+   alternative: population mean not equal to 3.844872 
+
+Test results: 
+   t-statistic:  2.827 
+   degrees of freedom:  26 
+   p-value:  0.009 
+
+Other information: 
+   two-sided 95% confidence interval:  [4.2, 6.096] 
+   estimated effect size (Cohen's d):  0.544 
+"

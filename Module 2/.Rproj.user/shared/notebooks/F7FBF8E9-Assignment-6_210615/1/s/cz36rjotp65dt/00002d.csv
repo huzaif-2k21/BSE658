@@ -1,0 +1,13 @@
+"0",""
+"0","# Step 2: Remove the control group and keep only trt1 and trt2"
+"0","cleaned_data <- subset(PlantGrowth, group != ""ctrl"")"
+"0",""
+"0","# Optional: Reset the factor levels to drop unused levels"
+"0","cleaned_data$group <- factor(cleaned_data$group)"
+"0",""
+"0","# Display the cleaned dataset"
+"0","cat(""\nCleaned Dataset (Only trt1 and trt2):\n"")"
+"1","
+Cleaned Dataset (Only trt1 and trt2):
+"
+"0","print(head(cleaned_data))"

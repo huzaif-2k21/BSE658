@@ -1,0 +1,26 @@
+"0","```r
+oneSampleTTest( chico$improvement, mu=0 )
+```"
+"1","
+   One sample t-test 
+
+Data variable:   chico$improvement 
+
+Descriptive statistics: 
+            improvement
+   mean           1.405
+   std dev.       0.970
+
+Hypotheses: 
+   null:        population mean equals 0 
+   alternative: population mean not equal to 0 
+
+Test results: 
+   t-statistic:  6.475 
+   degrees of freedom:  19 
+   p-value:  <.001 
+
+Other information: 
+   two-sided 95% confidence interval:  [0.951, 1.859] 
+   estimated effect size (Cohen's d):  1.448 
+"

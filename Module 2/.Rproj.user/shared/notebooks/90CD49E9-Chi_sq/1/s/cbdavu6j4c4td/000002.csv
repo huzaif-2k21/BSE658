@@ -1,0 +1,10 @@
+"0","```r
+chapekFrequencies <- xtabs( ~ choice + species, data = chapek9)
+chapekFrequencies
+```"
+"1","        species
+choice   robot human
+  puppy     13    15
+  flower    30    13
+  data      44    65
+"

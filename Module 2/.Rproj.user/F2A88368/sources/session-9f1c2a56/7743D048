@@ -1,0 +1,28 @@
+{
+    "id": "7743D048",
+    "path": "~/GitHub/BSE658/module 6/linearMixedModels.Rmd",
+    "project_path": null,
+    "type": "r_markdown",
+    "hash": "3672741562",
+    "contents": "",
+    "dirty": false,
+    "created": 1730885196776.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "253,3",
+        "scrollLine": "0",
+        "last_setup_crc32": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1731356041,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1731441949769,
+    "read_only": false,
+    "read_only_alternatives": []
+}

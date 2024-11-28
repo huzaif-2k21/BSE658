@@ -1,0 +1,3 @@
+"0","car::vif( mod = sense_all )"
+"2","Error in vif.default(mod = sense_all) : model contains fewer than 2 terms
+"
